@@ -1,0 +1,3176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>6.2</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
+    <ProjectGuid>{4374da1d-b752-439d-ace0-060cdffe2935}</ProjectGuid>
+    <avrdevice>atmega2560</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>Executable</OutputType>
+    <Language>CPP</Language>
+    <OutputFileName>$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.elf</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <AssemblyName>ArduCopter</AssemblyName>
+    <Name>ArduCopter</Name>
+    <RootNamespace>ArduCopter</RootNamespace>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <OverrideVtorValue>exception_table</OverrideVtorValue>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress>0x20000000</RamSnippetAddress>
+    <CacheFlash>true</CacheFlash>
+    <UncachedRange />
+    <BootSegment>0</BootSegment>
+    <AsfFrameworkConfig>
+      <framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.6.0" />
+        </dependencies>
+      </framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=101</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+      <Value>CONFIG_HAL_BOARD=HAL_BOARD_APM2</Value>
+      <Value>EXCLUDECORE</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/apm/libraries</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/libraries</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl</Value>
+      <Value>../../ArduCopter</Value>
+      <Value></Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=101</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+      <Value>CONFIG_HAL_BOARD=HAL_BOARD_APM2</Value>
+      <Value>EXCLUDECORE</Value>
+    </ListValues>
+  </avrgcccpp.compiler.symbols.DefSymbols>
+  <avrgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/apm/libraries</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/libraries</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl</Value>
+      <Value>../../ArduCopter</Value>
+      <Value></Value>
+    </ListValues>
+  </avrgcccpp.compiler.directories.IncludePaths>
+  <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+    <VMSETTING_IncludePaths>;../../ArduCopter;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/libraries;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/apm/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;C:/Users/Hugo/Documents/GitHub/libraries;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/avr/;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/arduino/cores/arduino;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings>
+        <arduino.board.name>apm2_2560HAL</arduino.board.name>
+        <arduino.board.desc>Arduino Mega 2560 HAL (Apm 2)</arduino.board.desc>
+        <arduino.board.property_bag>name=Arduino Mega 2560 HAL (Apm 2)
+upload.protocol=wiring
+upload.maximum_size=258048
+upload.speed=115200
+bootloader.low_fuses=0xFF
+bootloader.high_fuses=0xD8
+bootloader.extended_fuses=0xFD
+bootloader.path=stk500v2
+bootloader.file=stk500boot_v2_mega2560.hex
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+build.mcu=atmega2560
+build.f_cpu=16000000L
+build.nocore=true
+build.noarchive=true
+build.option1=-mcall-prologues
+build.option2=-DCONFIG_HAL_BOARD=HAL_BOARD_APM2
+build.option3=-DEXCLUDECORE
+build.linkoption1=-mcall-prologues
+runtime.ide.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows
+build.system.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware\apm\system
+runtime.ide.version=101
+target_package=apm
+target_platform=avr
+runtime.hardware.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware
+originalid=apm2_2560HAL
+vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x
+ide.hint=Arduino 0023 and 1.0.x Ide
+ide.location.key=Arduino
+ide.location.ide.winreg=Arduino 1.0.x Application
+ide.location.sketchbook.winreg=Arduino 1.0.x Sketchbook
+ide.location.sketchbook.preferences=sketchbook.path
+ide.location.sketchbook.default=%MYDOCUMENTS%\arduino
+ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt
+ide.default.package=arduino
+ide.default.platform=avr
+ide.multiplatform=true
+ide.includes=arduino.h
+ide.platformswithoutpackage=true
+ide.includes.fallback=wprogram.h
+ide.extension=ino
+ide.extension.fallback=pde
+ide.versionLTEQ=149
+ide.exe=arduino.exe
+ide.hosts=atmel
+ide.url=http://arduino.cc/en/Main/Software
+vm.debug=true
+software=ARDUINO
+ide.appid=arduino10x
+location.sketchbook=C:\Users\Hugo\Documents\GitHub\ardupilot
+vm.core.include=wprogram.h
+build.board=AVR_APM2_2560HAL
+vm.boardsource.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware\apm
+runtime.platform.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware\apm
+vm.platformname.name=avr
+build.arch=AVR
+object_file=C:\Users\Hugo\AppData\Local\V.Micro\Arduino\Builds\ArduCopter\apm_1280\AP_HAL_AVR\RCOutput_APM1.cpp.o
+source_file=C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\RCOutput_APM1.cpp
+</arduino.board.property_bag>
+        <arduino.build.mcu>atmega2560</arduino.build.mcu>
+        <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
+        <arduino.upload.protocol>wiring</arduino.upload.protocol>
+        <arduino.upload.speed>115200</arduino.upload.speed>
+        <arduino.upload.maximum_size>258048</arduino.upload.maximum_size>
+        <visualmicro.application.name>arduino10x</visualmicro.application.name>
+        <visualmicro.package.name>apm</visualmicro.package.name>
+        <visualmicro.platform.name>avr</visualmicro.platform.name>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=101</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+      <Value>CONFIG_HAL_BOARD=HAL_BOARD_APM2</Value>
+      <Value>EXCLUDECORE</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/apm/libraries</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/libraries</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl</Value>
+      <Value>../../ArduCopter</Value>
+      <Value></Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize (-O1)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>__AVR_ATmega2560__</Value>
+      <Value>ARDUINO=101</Value>
+      <Value>ARDUINO_MAIN</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>__AVR__</Value>
+      <Value>CONFIG_HAL_BOARD=HAL_BOARD_APM2</Value>
+      <Value>EXCLUDECORE</Value>
+    </ListValues>
+  </avrgcccpp.compiler.symbols.DefSymbols>
+  <avrgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/lib/gcc/avr/4.3.2/include/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/avr/</Value>
+      <Value>c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries</Value>
+      <Value>C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/apm/libraries</Value>
+      <Value>C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/libraries</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl/utility</Value>
+      <Value>C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl</Value>
+      <Value>../../ArduCopter</Value>
+      <Value></Value>
+    </ListValues>
+  </avrgcccpp.compiler.directories.IncludePaths>
+  <avrgcccpp.compiler.optimization.level>Optimize (-O1)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+    <VMSETTING_IncludePaths>;../../ArduCopter;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/libraries;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/apm/libraries;C:/Program Files (x86)/Visual Micro/Visual Micro for Arduino/Micro Platforms/default/debuggers;C:/Users/Hugo/Documents/GitHub/libraries;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/include/avr/;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/avr/;c:/ardupilot-arduino-1.0.3-gcc-4.8.2-windows/ardupilot-arduino-1.0.3-windows/hardware/tools/avr/lib/gcc/avr/4.3.2/include/;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_AttitudeControl/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Fence/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_PID/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_Sprayer/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AC_WPNav/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ADC_AnalogSource/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_AHRS/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Airspeed/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Baro/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BattMonitor/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_BoardConfig/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Buffer/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Camera/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Common/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Compass/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Curve/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Declination/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_EPM/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Frsky_Telem/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_GPS/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_AVR_SITL/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Empty/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_FLYMAPLE/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_Linux/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_PX4/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_HAL_VRBRAIN/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialNav/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_InertialSensor/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Math/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Menu/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mission/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Motors/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Mount/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_NavEKF/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Notify/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_OpticalFlow/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Parachute/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Param/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Progmem/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Rally/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RangeFinder/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_RCMapper/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Relay/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Scheduler/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_ServoRelayEvents/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Terrain/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/AP_Vehicle/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/DataFlash/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/Filter/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/GCS_MAVLink/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/RC_Channel/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/SITL/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries/StorageManager/utility;C:/Users/Hugo/Documents/GitHub/ardupilot/libraries;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/arduino/cores/arduino;C:/ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows/ArduPilot-Arduino-1.0.3-windows/hardware/arduino/variants/mega;</VMSETTING_IncludePaths>
+    <VisualMicroSettings>
+      <VisualMicroSettings>
+        <arduino.board.name>apm2_2560HAL</arduino.board.name>
+        <arduino.board.desc>Arduino Mega 2560 HAL (Apm 2)</arduino.board.desc>
+        <arduino.board.property_bag>name=Arduino Mega 2560 HAL (Apm 2)
+upload.protocol=wiring
+upload.maximum_size=258048
+upload.speed=115200
+bootloader.low_fuses=0xFF
+bootloader.high_fuses=0xD8
+bootloader.extended_fuses=0xFD
+bootloader.path=stk500v2
+bootloader.file=stk500boot_v2_mega2560.hex
+bootloader.unlock_bits=0x3F
+bootloader.lock_bits=0x0F
+build.mcu=atmega2560
+build.f_cpu=16000000L
+build.nocore=true
+build.noarchive=true
+build.option1=-mcall-prologues
+build.option2=-DCONFIG_HAL_BOARD=HAL_BOARD_APM2
+build.option3=-DEXCLUDECORE
+build.linkoption1=-mcall-prologues
+runtime.ide.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows
+build.system.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware\apm\system
+runtime.ide.version=101
+target_package=apm
+target_platform=avr
+runtime.hardware.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware
+originalid=apm2_2560HAL
+vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\arduino10x
+ide.hint=Arduino 0023 and 1.0.x Ide
+ide.location.key=Arduino
+ide.location.ide.winreg=Arduino 1.0.x Application
+ide.location.sketchbook.winreg=Arduino 1.0.x Sketchbook
+ide.location.sketchbook.preferences=sketchbook.path
+ide.location.sketchbook.default=%MYDOCUMENTS%\arduino
+ide.location.preferences=%VM_APPDATA_ROAMING%\arduino\preferences.txt
+ide.default.package=arduino
+ide.default.platform=avr
+ide.multiplatform=true
+ide.includes=arduino.h
+ide.platformswithoutpackage=true
+ide.includes.fallback=wprogram.h
+ide.extension=ino
+ide.extension.fallback=pde
+ide.versionLTEQ=149
+ide.exe=arduino.exe
+ide.hosts=atmel
+ide.url=http://arduino.cc/en/Main/Software
+vm.debug=true
+software=ARDUINO
+ide.appid=arduino10x
+location.sketchbook=C:\Users\Hugo\Documents\GitHub\ardupilot
+vm.core.include=wprogram.h
+build.board=AVR_APM2_2560HAL
+vm.boardsource.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware\apm
+runtime.platform.path=C:\ArduPilot-Arduino-1.0.3-gcc-4.8.2-windows\ArduPilot-Arduino-1.0.3-windows\hardware\apm
+vm.platformname.name=avr
+build.arch=AVR
+object_file=C:\Users\Hugo\AppData\Local\V.Micro\Arduino\Builds\ArduCopter\apm_1280\AP_HAL_AVR\RCOutput_APM1.cpp.o
+source_file=C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\RCOutput_APM1.cpp
+</arduino.board.property_bag>
+        <arduino.build.mcu>atmega2560</arduino.build.mcu>
+        <arduino.build.f_cpu>16000000L</arduino.build.f_cpu>
+        <arduino.upload.protocol>wiring</arduino.upload.protocol>
+        <arduino.upload.speed>115200</arduino.upload.speed>
+        <arduino.upload.maximum_size>258048</arduino.upload.maximum_size>
+        <visualmicro.application.name>arduino10x</visualmicro.application.name>
+        <visualmicro.package.name>apm</visualmicro.package.name>
+        <visualmicro.platform.name>avr</visualmicro.platform.name>
+      </VisualMicroSettings>
+    </VisualMicroSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\libraries\AC_AttitudeControl\AC_AttitudeControl.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_AttitudeControl\AC_AttitudeControl.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_AttitudeControl\AC_AttitudeControl.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_AttitudeControl\AC_AttitudeControl.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_AttitudeControl\AC_AttitudeControl_Heli.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_AttitudeControl\AC_AttitudeControl_Heli.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_AttitudeControl\AC_AttitudeControl_Heli.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_AttitudeControl\AC_AttitudeControl_Heli.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_AttitudeControl\AC_PosControl.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_AttitudeControl\AC_PosControl.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_AttitudeControl\AC_PosControl.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_AttitudeControl\AC_PosControl.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_Fence\AC_Fence.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_Fence\AC_Fence.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_Fence\AC_Fence.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_Fence\AC_Fence.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_PID\AC_HELI_PID.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_PID\AC_HELI_PID.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_PID\AC_HELI_PID.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_PID\AC_HELI_PID.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_PID\AC_P.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_PID\AC_P.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_PID\AC_P.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_PID\AC_P.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_PID\AC_PID.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_PID\AC_PID.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_PID\AC_PID.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_PID\AC_PID.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_Sprayer\AC_Sprayer.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_Sprayer\AC_Sprayer.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_Sprayer\AC_Sprayer.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_Sprayer\AC_Sprayer.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_WPNav\AC_Circle.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_WPNav\AC_Circle.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_WPNav\AC_Circle.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_WPNav\AC_Circle.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_WPNav\AC_WPNav.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_WPNav\AC_WPNav.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AC_WPNav\AC_WPNav.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AC_WPNav\AC_WPNav.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC\AP_ADC.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC\AP_ADC.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC\AP_ADC.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC\AP_ADC.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC\AP_ADC_ADS7844.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC\AP_ADC_ADS7844.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC\AP_ADC_ADS7844.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC\AP_ADC_ADS7844.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC\AP_ADC_HIL.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC\AP_ADC_HIL.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC\AP_ADC_HIL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC\AP_ADC_HIL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC_AnalogSource\AP_ADC_AnalogSource.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC_AnalogSource\AP_ADC_AnalogSource.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ADC_AnalogSource\AP_ADC_AnalogSource.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ADC_AnalogSource\AP_ADC_AnalogSource.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_AHRS\AP_AHRS.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_AHRS\AP_AHRS.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_AHRS\AP_AHRS.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_AHRS\AP_AHRS.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_AHRS\AP_AHRS_DCM.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_AHRS\AP_AHRS_DCM.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_AHRS\AP_AHRS_DCM.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_AHRS\AP_AHRS_DCM.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_AHRS\AP_AHRS_NavEKF.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_AHRS\AP_AHRS_NavEKF.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_AHRS\AP_AHRS_NavEKF.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_AHRS\AP_AHRS_NavEKF.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\Airspeed_Calibration.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\Airspeed_Calibration.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_analog.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_analog.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_analog.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_analog.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_Backend.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_Backend.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_I2C.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_I2C.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_I2C.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_I2C.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_I2C_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_I2C_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_PX4.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_PX4.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Airspeed\AP_Airspeed_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Airspeed\AP_Airspeed_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_BMP085.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_BMP085.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_BMP085.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_BMP085.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_Glitch.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_Glitch.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_Glitch.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_Glitch.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_HIL.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_HIL.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_HIL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_HIL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_MS5611.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_MS5611.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_MS5611.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_MS5611.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_PX4.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_PX4.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_VRBRAIN.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_VRBRAIN.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Baro\AP_Baro_VRBRAIN.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Baro\AP_Baro_VRBRAIN.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_BattMonitor\AP_BattMonitor.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_BattMonitor\AP_BattMonitor.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_BattMonitor\AP_BattMonitor.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_BattMonitor\AP_BattMonitor.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_BoardConfig\AP_BoardConfig.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_BoardConfig\AP_BoardConfig.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_BoardConfig\AP_BoardConfig.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_BoardConfig\AP_BoardConfig.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Buffer\AP_Buffer.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Buffer\AP_Buffer.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Camera\AP_Camera.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Camera\AP_Camera.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Camera\AP_Camera.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Camera\AP_Camera.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Common\AP_Common.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Common\AP_Common.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Common\AP_Common.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Common\AP_Common.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Common\AP_Test.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Common\AP_Test.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Common\Arduino.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Common\Arduino.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Common\c++.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Common\c++.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_HIL.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_HIL.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_HIL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_HIL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_HMC5843.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_HMC5843.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_HMC5843.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_HMC5843.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_PX4.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_PX4.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_VRBRAIN.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_VRBRAIN.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\AP_Compass_VRBRAIN.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\AP_Compass_VRBRAIN.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\Compass.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\Compass.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\Compass.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\Compass.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Compass\Compass_learn.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Compass\Compass_learn.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Curve\AP_Curve.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Curve\AP_Curve.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Curve\AP_Curve.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Curve\AP_Curve.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Declination\AP_Declination.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Declination\AP_Declination.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Declination\AP_Declination.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Declination\AP_Declination.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_EPM\AP_EPM.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_EPM\AP_EPM.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_EPM\AP_EPM.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_EPM\AP_EPM.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Frsky_Telem\AP_Frsky_Telem.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Frsky_Telem\AP_Frsky_Telem.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Frsky_Telem\AP_Frsky_Telem.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Frsky_Telem\AP_Frsky_Telem.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_Glitch.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_Glitch.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_Glitch.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_Glitch.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_MTK.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_MTK.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_MTK.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_MTK.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_MTK19.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_MTK19.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_MTK19.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_MTK19.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_MTK_Common.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_MTK_Common.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_NMEA.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_NMEA.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_NMEA.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_NMEA.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_SBP.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_SBP.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_SBP.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_SBP.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_SIRF.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_SIRF.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_SIRF.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_SIRF.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_UBLOX.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_UBLOX.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\AP_GPS_UBLOX.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\AP_GPS_UBLOX.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\GPS_Backend.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\GPS_Backend.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\GPS_Backend.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\GPS_Backend.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_GPS\GPS_detect_state.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_GPS\GPS_detect_state.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\AP_HAL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\AP_HAL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\AP_HAL_Boards.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\AP_HAL_Boards.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\AP_HAL_Macros.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\AP_HAL_Macros.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\AP_HAL_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\AP_HAL_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\GPIO.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\GPIO.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\HAL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\HAL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\I2CDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\I2CDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\Semaphores.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\Semaphores.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\SPIDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\SPIDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\UARTDriver.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\Util.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\Util.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\BetterStream.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\BetterStream.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\FastDelegate.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\FastDelegate.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\ftoa_engine.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\ftoa_engine.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\ftoa_engine.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\ftoa_engine.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\Print.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\Print.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\Print.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\Print.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\print_vprintf.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\print_vprintf.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\print_vprintf.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\print_vprintf.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\Stream.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\Stream.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\utoa_invert.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\utoa_invert.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL\utility\xtoa_fast.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL\utility\xtoa_fast.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\AnalogIn_ADC.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\AnalogIn_ADC.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\AnalogIn_Common.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\AnalogIn_Common.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\AP_HAL_AVR.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\AP_HAL_AVR.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\AP_HAL_AVR_Main.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\AP_HAL_AVR_Main.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\AP_HAL_AVR_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\AP_HAL_AVR_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\AP_HAL_AVR_private.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\AP_HAL_AVR_private.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\GPIO.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\GPIO.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\GPIO.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\GPIO.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\HAL_AVR_APM1_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\HAL_AVR_APM1_Class.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\HAL_AVR_APM1_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\HAL_AVR_APM1_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\HAL_AVR_APM2_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\HAL_AVR_APM2_Class.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\HAL_AVR_APM2_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\HAL_AVR_APM2_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\I2CDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\I2CDriver.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\I2CDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\I2CDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\memcheck.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\memcheck.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\memcheck.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\memcheck.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\RCInput_APM1.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\RCInput_APM1.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\RCInput_APM2.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\RCInput_APM2.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\RCOutput_APM1.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\RCOutput_APM1.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\RCOutput_APM2.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\RCOutput_APM2.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Scheduler.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Scheduler_Timer.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Scheduler_Timer.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Semaphores.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Semaphores.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Semaphores.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Semaphores.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\SPIDeviceManager_APM1.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\SPIDeviceManager_APM1.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\SPIDeviceManager_APM2.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\SPIDeviceManager_APM2.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\SPIDevices.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\SPIDevices.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\SPIDevice_SPI0.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\SPIDevice_SPI0.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\SPIDevice_SPI2.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\SPIDevice_SPI2.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\SPIDevice_SPI3.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\SPIDevice_SPI3.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\SPIDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\SPIDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Storage.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Storage.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\UARTDriver.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_AVR\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\utility\ISRRegistry.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\utility\ISRRegistry.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\utility\ISRRegistry.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\utility\ISRRegistry.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\utility\pins_arduino_mega.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\utility\pins_arduino_mega.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR\utility\pins_arduino_mega.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR\utility\pins_arduino_mega.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\AnalogIn.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\AnalogIn.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL_Main.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL_Main.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL_Private.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\AP_HAL_AVR_SITL_Private.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\HAL_AVR_SITL_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\HAL_AVR_SITL_Class.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\HAL_AVR_SITL_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\HAL_AVR_SITL_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\RCInput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\RCInput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\RCOutput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\RCOutput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\Scheduler.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\sitl_barometer.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\sitl_barometer.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\sitl_compass.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\sitl_compass.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\sitl_gps.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\sitl_gps.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\sitl_ins.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\sitl_ins.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\SITL_State.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\SITL_State.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\SITL_State.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\SITL_State.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\Storage.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\Storage.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\UARTDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_AVR_SITL\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\AnalogIn.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\AnalogIn.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\AP_HAL_Empty.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\AP_HAL_Empty.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\AP_HAL_Empty_Main.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\AP_HAL_Empty_Main.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\AP_HAL_Empty_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\AP_HAL_Empty_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\AP_HAL_Empty_Private.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\AP_HAL_Empty_Private.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\GPIO.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\GPIO.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\GPIO.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\GPIO.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\HAL_Empty_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\HAL_Empty_Class.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\HAL_Empty_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\HAL_Empty_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\I2CDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\I2CDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\I2CDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\I2CDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\PrivateMember.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\PrivateMember.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\PrivateMember.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\PrivateMember.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\RCInput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\RCInput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\RCOutput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\RCOutput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\Scheduler.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\Semaphores.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\Semaphores.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\Semaphores.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\Semaphores.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\SPIDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\SPIDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\SPIDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\SPIDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\Storage.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\Storage.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\UARTDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Empty\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Empty\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\AnalogIn.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\AnalogIn.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\AnalogSource.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\AnalogSource.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE_Main.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE_Main.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE_Private.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\AP_HAL_FLYMAPLE_Private.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\FlymapleWirish.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\FlymapleWirish.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\GPIO.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\GPIO.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\GPIO.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\GPIO.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\HAL_FLYMAPLE_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\HAL_FLYMAPLE_Class.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\HAL_FLYMAPLE_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\HAL_FLYMAPLE_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\I2CDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\I2CDriver.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\I2CDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\I2CDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\RCInput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\RCInput.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\RCOutput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\RCOutput.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\Scheduler.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\Semaphores.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\Semaphores.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\Semaphores.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\Semaphores.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\SPIDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\SPIDriver.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\SPIDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\SPIDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\Storage.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\Storage.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\UARTDriver.cpp</Link>
+      <CustomCompilationSetting Condition="'$(Configuration)' == 'Debug'"> -I"C:\Users\Hugo\Documents\GitHub\ardupilot\libraries\AP_HAL_FLYMAPLE\utility"</CustomCompilationSetting>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\utility\EEPROM.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\utility\EEPROM.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\utility\EEPROM.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\utility\EEPROM.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32F1.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32F1.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32F2.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\utility\flash_stm32F2.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\AnalogIn.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\AnalogIn.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\AP_HAL_Linux.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\AP_HAL_Linux.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\AP_HAL_Linux_Main.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\AP_HAL_Linux_Main.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\AP_HAL_Linux_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\AP_HAL_Linux_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\AP_HAL_Linux_Private.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\AP_HAL_Linux_Private.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\GPIO.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\GPIO.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\GPIO.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\GPIO.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\HAL_Linux_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\HAL_Linux_Class.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\HAL_Linux_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\HAL_Linux_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\I2CDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\I2CDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\I2CDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\I2CDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\RCInput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\RCInput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\RCOutput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\RCOutput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Scheduler.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Semaphores.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Semaphores.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Semaphores.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Semaphores.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\SPIDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\SPIDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\SPIDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\SPIDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Storage.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Storage.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\UARTDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Util.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Util.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_Linux\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_Linux\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\AnalogIn.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\AnalogIn.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\AP_HAL_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\AP_HAL_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\AP_HAL_PX4_Main.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\AP_HAL_PX4_Main.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\AP_HAL_PX4_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\AP_HAL_PX4_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\GPIO.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\GPIO.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\GPIO.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\GPIO.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\HAL_PX4_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\HAL_PX4_Class.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\HAL_PX4_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\HAL_PX4_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\RCInput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\RCInput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\RCOutput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\RCOutput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\Scheduler.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\Storage.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\Storage.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\UARTDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\Util.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\Util.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_PX4\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_PX4\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\AnalogIn.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\AnalogIn.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\AnalogIn.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\AnalogIn.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\AP_HAL_VRBRAIN.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\AP_HAL_VRBRAIN.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\AP_HAL_VRBRAIN_Main.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\AP_HAL_VRBRAIN_Main.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\AP_HAL_VRBRAIN_Namespace.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\AP_HAL_VRBRAIN_Namespace.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\GPIO.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\GPIO.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\GPIO.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\GPIO.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\HAL_VRBRAIN_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\HAL_VRBRAIN_Class.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\HAL_VRBRAIN_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\HAL_VRBRAIN_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\RCInput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\RCInput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\RCInput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\RCInput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\RCOutput.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\RCOutput.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\RCOutput.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\RCOutput.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\Scheduler.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\Storage.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\Storage.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\Storage.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\Storage.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\UARTDriver.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\UARTDriver.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\UARTDriver.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\UARTDriver.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\Util.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\Util.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_HAL_VRBRAIN\Util.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\Util.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialNav\AP_InertialNav.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialNav\AP_InertialNav.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialNav\AP_InertialNav.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialNav\AP_InertialNav.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialNav\AP_InertialNav_NavEKF.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialNav\AP_InertialNav_NavEKF.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialNav\AP_InertialNav_NavEKF.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialNav\AP_InertialNav_NavEKF.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_Backend.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_Backend.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_Backend.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_Backend.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_Flymaple.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_Flymaple.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_Flymaple.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_Flymaple.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_HIL.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_HIL.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_HIL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_HIL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_L3G4200D.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_L3G4200D.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_L3G4200D.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_L3G4200D.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_L3GD20.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_L3GD20.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_L3GD20.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_L3GD20.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_LSM303D.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_LSM303D.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_LSM303D.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_LSM303D.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_LSM9DS0.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_LSM9DS0.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_LSM9DS0.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_LSM9DS0.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_MPU6000.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_MPU6000.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_MPU6000.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_MPU6000.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_MPU9150.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_MPU9150.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_MPU9150.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_MPU9150.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_MPU9250.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_MPU9250.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_MPU9250.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_MPU9250.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_Oilpan.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_Oilpan.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_Oilpan.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_Oilpan.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_PX4.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_PX4.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_MAVLink.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_MAVLink.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_MAVLink.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_MAVLink.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_Stream.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_Stream.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_Stream.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_UserInteract_Stream.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_VRBRAIN.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_VRBRAIN.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_InertialSensor\AP_InertialSensor_VRBRAIN.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_InertialSensor\AP_InertialSensor_VRBRAIN.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\AP_Math.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\AP_Math.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\AP_Math.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\AP_Math.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\AP_Math_AVR_Compat.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\AP_Math_AVR_Compat.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\edc.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\edc.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\edc.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\edc.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\location.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\location.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\matrix3.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\matrix3.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\matrix3.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\matrix3.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\polygon.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\polygon.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\polygon.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\polygon.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\quaternion.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\quaternion.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\quaternion.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\quaternion.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\rotations.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\rotations.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\vector2.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\vector2.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\vector2.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\vector2.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\vector3.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\vector3.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\vector3.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\vector3.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Math\vectorN.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Math\vectorN.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Menu\AP_Menu.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Menu\AP_Menu.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Menu\AP_Menu.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Menu\AP_Menu.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Mission\AP_Mission.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Mission\AP_Mission.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Mission\AP_Mission.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Mission\AP_Mission.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_Motors.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_Motors.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsCoax.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsCoax.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsCoax.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsCoax.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsHeli.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsHeli.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsHeli.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsHeli.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsHexa.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsHexa.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsHexa.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsHexa.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsMatrix.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsMatrix.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsMatrix.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsMatrix.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsOcta.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsOcta.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsOcta.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsOcta.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsOctaQuad.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsOctaQuad.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsOctaQuad.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsOctaQuad.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsQuad.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsQuad.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsQuad.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsQuad.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsSingle.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsSingle.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsSingle.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsSingle.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsTri.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsTri.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsTri.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsTri.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsY6.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsY6.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_MotorsY6.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_MotorsY6.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_Motors_Class.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_Motors_Class.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Motors\AP_Motors_Class.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Motors\AP_Motors_Class.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Mount\AP_Mount.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Mount\AP_Mount.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Mount\AP_Mount.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Mount\AP_Mount.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_NavEKF\AP_NavEKF.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_NavEKF\AP_NavEKF.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_NavEKF\AP_NavEKF.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_NavEKF\AP_NavEKF.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\AP_BoardLED.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\AP_BoardLED.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\AP_BoardLED.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\AP_BoardLED.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\AP_Notify.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\AP_Notify.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\AP_Notify.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\AP_Notify.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\Buzzer.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\Buzzer.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\Buzzer.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\Buzzer.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ExternalLED.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ExternalLED.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ExternalLED.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ExternalLED.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToneAlarm_PX4.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToneAlarm_PX4.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToneAlarm_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToneAlarm_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToshibaLED.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToshibaLED.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToshibaLED.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToshibaLED.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToshibaLED_I2C.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToshibaLED_I2C.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToshibaLED_I2C.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToshibaLED_I2C.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToshibaLED_PX4.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToshibaLED_PX4.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Notify\ToshibaLED_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Notify\ToshibaLED_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_OpticalFlow\AP_OpticalFlow.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_OpticalFlow\AP_OpticalFlow.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_OpticalFlow\AP_OpticalFlow.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_OpticalFlow\AP_OpticalFlow.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_OpticalFlow\AP_OpticalFlow_ADNS3080.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_OpticalFlow\AP_OpticalFlow_ADNS3080.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_OpticalFlow\AP_OpticalFlow_ADNS3080.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_OpticalFlow\AP_OpticalFlow_ADNS3080.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Parachute\AP_Parachute.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Parachute\AP_Parachute.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Parachute\AP_Parachute.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Parachute\AP_Parachute.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Param\AP_Param.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Param\AP_Param.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Param\AP_Param.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Param\AP_Param.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Progmem\AP_Progmem.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Progmem\AP_Progmem.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Progmem\AP_Progmem_AVR.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Progmem\AP_Progmem_AVR.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Progmem\AP_Progmem_AVR.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Progmem\AP_Progmem_AVR.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Progmem\AP_Progmem_Identity.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Progmem\AP_Progmem_Identity.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Rally\AP_Rally.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Rally\AP_Rally.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Rally\AP_Rally.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Rally\AP_Rally.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_analog.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_analog.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_analog.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_analog.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_MaxsonarI2CXL.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_MaxsonarI2CXL.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_MaxsonarI2CXL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_MaxsonarI2CXL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_PulsedLightLRF.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_PulsedLightLRF.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_PulsedLightLRF.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_PulsedLightLRF.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_PX4.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_PX4.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\AP_RangeFinder_PX4.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\AP_RangeFinder_PX4.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\RangeFinder.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\RangeFinder.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\RangeFinder.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\RangeFinder.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\RangeFinder_Backend.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\RangeFinder_Backend.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RangeFinder\RangeFinder_Backend.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RangeFinder\RangeFinder_Backend.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RCMapper\AP_RCMapper.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RCMapper\AP_RCMapper.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_RCMapper\AP_RCMapper.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_RCMapper\AP_RCMapper.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Relay\AP_Relay.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Relay\AP_Relay.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Relay\AP_Relay.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Relay\AP_Relay.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Scheduler\AP_Scheduler.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Scheduler\AP_Scheduler.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Scheduler\AP_Scheduler.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Scheduler\AP_Scheduler.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ServoRelayEvents\AP_ServoRelayEvents.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ServoRelayEvents\AP_ServoRelayEvents.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_ServoRelayEvents\AP_ServoRelayEvents.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_ServoRelayEvents\AP_ServoRelayEvents.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Terrain\AP_Terrain.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Terrain\AP_Terrain.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Terrain\AP_Terrain.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Terrain\AP_Terrain.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Terrain\TerrainGCS.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Terrain\TerrainGCS.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Terrain\TerrainIO.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Terrain\TerrainIO.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Terrain\TerrainMission.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Terrain\TerrainMission.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Terrain\TerrainUtil.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Terrain\TerrainUtil.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\AP_Vehicle\AP_Vehicle.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\AP_Vehicle\AP_Vehicle.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_APM1.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_APM1.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_APM1.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_APM1.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_APM2.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_APM2.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_APM2.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_APM2.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_Block.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_Block.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_Block.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_Block.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_Empty.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_Empty.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_Empty.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_Empty.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_File.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_File.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_File.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_File.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_SITL.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_SITL.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\DataFlash_SITL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\DataFlash_SITL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\DataFlash\LogFile.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\DataFlash\LogFile.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\AverageFilter.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\AverageFilter.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\Butter.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\Butter.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\DerivativeFilter.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\DerivativeFilter.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\DerivativeFilter.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\DerivativeFilter.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\Filter.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\Filter.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\FilterClass.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\FilterClass.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\FilterWithBuffer.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\FilterWithBuffer.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\LowPassFilter.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\LowPassFilter.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\LowPassFilter2p.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\LowPassFilter2p.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\LowPassFilter2p.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\LowPassFilter2p.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\Filter\ModeFilter.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\Filter\ModeFilter.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\GCS_MAVLink\GCS.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\GCS_MAVLink\GCS.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\GCS_MAVLink\GCS_Common.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\GCS_MAVLink\GCS_Common.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\GCS_MAVLink\GCS_Logs.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\GCS_MAVLink\GCS_Logs.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\GCS_MAVLink\GCS_MAVLink.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\GCS_MAVLink\GCS_MAVLink.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\GCS_MAVLink\GCS_MAVLink.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\GCS_MAVLink\GCS_MAVLink.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\GCS_MAVLink\GCS_serial_control.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\GCS_MAVLink\GCS_serial_control.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\RC_Channel\RC_Channel.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\RC_Channel\RC_Channel.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\RC_Channel\RC_Channel.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\RC_Channel\RC_Channel.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\RC_Channel\RC_Channel_aux.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\RC_Channel\RC_Channel_aux.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\RC_Channel\RC_Channel_aux.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\RC_Channel\RC_Channel_aux.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\SITL\SITL.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\SITL\SITL.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\SITL\SITL.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\SITL\SITL.h</Link>
+    </Compile>
+    <Compile Include="..\libraries\StorageManager\StorageManager.cpp">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\StorageManager\StorageManager.cpp</Link>
+    </Compile>
+    <Compile Include="..\libraries\StorageManager\StorageManager.h">
+      <SubType>compile</SubType>
+      <Link>src\sketch-api-readonly\libraries\StorageManager\StorageManager.h</Link>
+    </Compile>
+    <Compile Include="AP_State.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="compat.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="config_channels.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="defines.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="heli.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Parameters.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UserVariables.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Visual Micro\.ArduCopter.vsarduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <None Include="ArduCopter.pde">
+      <SubType>compile</SubType>
+    </None>
+    <Compile Include="Attitude.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="GCS_Mavlink.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Log.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="Parameters.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="UserCode.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commands.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="commands_logic.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="compassmot.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="compat.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_acro.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_althold.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_auto.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_autotune.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_circle.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_drift.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_flip.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_guided.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_land.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_loiter.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_ofloiter.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_poshold.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_rtl.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_sport.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="control_stabilize.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="crash_check.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="ekf_check.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="events.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="failsafe.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="fence.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="flight_mode.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="heli.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="heli_control_acro.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="heli_control_stabilize.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="inertia.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="land_detector.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="leds.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="motor_test.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="motors.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="navigation.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="perf_info.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="position_vector.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="radio.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="sensors.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="setup.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="switches.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="system.pde">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="test.pde">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\" />
+    <Folder Include="src\sketch-api-readonly\" />
+    <Folder Include="src\sketch-api-readonly\core\" />
+    <Folder Include="src\sketch-api-readonly\libraries\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AC_AttitudeControl\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AC_Fence\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AC_PID\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AC_Sprayer\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AC_WPNav\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_ADC\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_ADC_AnalogSource\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_AHRS\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Airspeed\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Baro\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_BattMonitor\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_BoardConfig\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Buffer\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Camera\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Common\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Compass\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Curve\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Declination\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_EPM\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Frsky_Telem\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_GPS\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL\utility\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_AVR\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_AVR\utility\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_AVR_SITL\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_Empty\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_FLYMAPLE\utility\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_Linux\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_PX4\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_HAL_VRBRAIN\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_InertialNav\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_InertialSensor\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Math\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Menu\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Mission\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Motors\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Mount\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_NavEKF\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Notify\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_OpticalFlow\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Parachute\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Param\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Progmem\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Rally\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_RangeFinder\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_RCMapper\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Relay\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Scheduler\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_ServoRelayEvents\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Terrain\" />
+    <Folder Include="src\sketch-api-readonly\libraries\AP_Vehicle\" />
+    <Folder Include="src\sketch-api-readonly\libraries\DataFlash\" />
+    <Folder Include="src\sketch-api-readonly\libraries\Filter\" />
+    <Folder Include="src\sketch-api-readonly\libraries\GCS_MAVLink\" />
+    <Folder Include="src\sketch-api-readonly\libraries\RC_Channel\" />
+    <Folder Include="src\sketch-api-readonly\libraries\SITL\" />
+    <Folder Include="src\sketch-api-readonly\libraries\StorageManager\" />
+    <Folder Include="Visual Micro\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="APM_Config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="APM_Config_mavlink_hil.h">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
