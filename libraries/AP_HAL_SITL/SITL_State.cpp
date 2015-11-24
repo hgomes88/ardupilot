@@ -22,6 +22,7 @@
 extern const AP_HAL::HAL& hal;
 
 using namespace HALSITL;
+using namespace SITL;
 
 void SITL_State::_set_param_default(const char *parm)
 {
@@ -34,9 +35,9 @@ void SITL_State::_set_param_default(const char *parm)
     float value = atof(p+1);
     *p = 0;
     enum ap_var_type var_type;
-    AP_Param *vp = AP_Param::find(parm, &var_type);
+    AP_Param *vp = AP_Param::find(pdup, &var_type);
     if (vp == NULL) {
-        printf("Unknown parameter %s\n", parm);
+        printf("Unknown parameter %s\n", pdup);
         exit(1);
     }
     if (var_type == AP_PARAM_FLOAT) {
@@ -48,10 +49,10 @@ void SITL_State::_set_param_default(const char *parm)
     } else if (var_type == AP_PARAM_INT8) {
         ((AP_Int8 *)vp)->set_and_save(value);
     } else {
-        printf("Unable to set parameter %s\n", parm);
+        printf("Unable to set parameter %s\n", pdup);
         exit(1);
     }
-    printf("Set parameter %s to %f\n", parm, value);
+    printf("Set parameter %s to %f\n", pdup, value);
     free(pdup);
 }
 
@@ -59,7 +60,7 @@ void SITL_State::_set_param_default(const char *parm)
 /*
   setup for SITL handling
  */
-void SITL_State::_sitl_setup(void)
+void SITL_State::_sitl_setup(const char *home_str)
 {
 #ifndef __CYGWIN__
     _parent_pid = getppid();
@@ -74,7 +75,7 @@ void SITL_State::_sitl_setup(void)
     fprintf(stdout, "Starting SITL input\n");
 
     // find the barometer object if it exists
-    _sitl = (SITL *)AP_Param::find_object("SIM_");
+    _sitl = (SITL::SITL *)AP_Param::find_object("SIM_");
     _barometer = (AP_Baro *)AP_Param::find_object("GND_");
     _ins = (AP_InertialSensor *)AP_Param::find_object("INS_");
     _compass = (Compass *)AP_Param::find_object("COMPASS_");
@@ -91,6 +92,9 @@ void SITL_State::_sitl_setup(void)
 #endif
         if (enable_gimbal) {
             gimbal = new Gimbal(_sitl->state);
+        }
+        if (enable_ADSB) {
+            adsb = new ADSB(_sitl->state, home_str);
         }
     }
 
@@ -145,26 +149,8 @@ void SITL_State::_setup_fdm(void)
 void SITL_State::_fdm_input_step(void)
 {
     static uint32_t last_pwm_input = 0;
-    fd_set fds;
-    struct timeval tv;
 
-    if (sitl_model != NULL) {
-        _fdm_input_local();
-    } else {
-        tv.tv_sec = 1;
-        tv.tv_usec = 0;
-
-        FD_ZERO(&fds);
-        FD_SET(_sitl_fd, &fds);
-        if (select(_sitl_fd+1, &fds, NULL, NULL, &tv) != 1) {
-            // internal error
-            _simulator_output(true);
-            return;
-        }
-
-        /* check for packet from flight sim */
-        _fdm_input();
-    }
+    _fdm_input_local();
 
     /* make sure we die if our parent dies */
     if (kill(_parent_pid, 0) != 0) {
@@ -176,8 +162,8 @@ void SITL_State::_fdm_input_step(void)
     }
 
     // simulate RC input at 50Hz
-    if (hal.scheduler->millis() - last_pwm_input >= 20 && _sitl->rc_fail == 0) {
-        last_pwm_input = hal.scheduler->millis();
+    if (AP_HAL::millis() - last_pwm_input >= 20 && _sitl->rc_fail == 0) {
+        last_pwm_input = AP_HAL::millis();
         new_rc_input = true;
     }
 
@@ -213,7 +199,7 @@ void SITL_State::_fdm_input_step(void)
 
 void SITL_State::wait_clock(uint64_t wait_time_usec)
 {
-    while (hal.scheduler->micros64() < wait_time_usec) {
+    while (AP_HAL::micros64() < wait_time_usec) {
         _fdm_input_step();
     }
 }
@@ -227,71 +213,21 @@ void SITL_State::_fdm_input(void)
     ssize_t size;
     struct pwm_packet {
         uint16_t pwm[8];
-    };
-    union {
-        struct sitl_fdm fg_pkt;
-        struct pwm_packet pwm_pkt;
-    } d;
-    bool got_fg_input = false;
+    } pwm_pkt;
 
-    size = recv(_sitl_fd, &d, sizeof(d), MSG_DONTWAIT);
+    size = recv(_sitl_fd, &pwm_pkt, sizeof(pwm_pkt), MSG_DONTWAIT);
     switch (size) {
-    case 148:
-        static uint32_t last_report;
-        static uint32_t count;
-
-        if (d.fg_pkt.magic != 0x4c56414f) {
-            fprintf(stdout, "Bad FDM packet - magic=0x%08x\n", d.fg_pkt.magic);
-            return;
-        }
-
-        if (d.fg_pkt.latitude == 0 ||
-                d.fg_pkt.longitude == 0 ||
-                d.fg_pkt.altitude <= 0) {
-            // garbage input
-            return;
-        }
-
-        hal.scheduler->stop_clock(d.fg_pkt.timestamp_us);
-        _synthetic_clock_mode = true;
-        got_fg_input = true;
-
-        if (_sitl != NULL) {
-            _sitl->state = d.fg_pkt;
-            // prevent bad inputs from SIM from corrupting our state
-            double *v = &_sitl->state.latitude;
-            for (uint8_t i=0; i<17; i++) {
-                if (isinf(v[i]) || isnan(v[i]) || fabs(v[i]) > 1.0e10) {
-                    v[i] = 0;
-                }
-            }
-        }
-        _update_count++;
-
-        count++;
-        if (hal.scheduler->millis() - last_report > 1000) {
-            //fprintf(stdout, "SIM %u FPS\n", count);
-            count = 0;
-            last_report = hal.scheduler->millis();
-        }
-        break;
-
-    case 16: {
+    case sizeof(pwm_pkt): {
         // a packet giving the receiver PWM inputs
         uint8_t i;
         for (i=0; i<8; i++) {
             // setup the pwn input for the RC channel inputs
-            if (d.pwm_pkt.pwm[i] != 0) {
-                pwm_input[i] = d.pwm_pkt.pwm[i];
+            if (pwm_pkt.pwm[i] != 0) {
+                pwm_input[i] = pwm_pkt.pwm[i];
             }
         }
         break;
     }
-    }
-
-    if (got_fg_input) {
-        // send RC output to flight sim
-        _simulator_output(_synthetic_clock_mode);
     }
 }
 
@@ -314,9 +250,13 @@ void SITL_State::_fdm_input_local(void)
 
     // get FDM output from the model
     sitl_model->fill_fdm(_sitl->state);
+    _sitl->update_rate_hz = sitl_model->get_rate_hz();
 
     if (gimbal != NULL) {
         gimbal->update();
+    }
+    if (adsb != NULL) {
+        adsb->update();
     }
 
     // update simulation time
@@ -383,7 +323,7 @@ void SITL_State::_simulator_servos(Aircraft::sitl_input &input)
     }
 
     // output at chosen framerate
-    uint32_t now = hal.scheduler->micros();
+    uint32_t now = AP_HAL::micros();
     float deltat = (now - last_update_usec) * 1.0e-6f;
     last_update_usec = now;
 
@@ -417,7 +357,7 @@ void SITL_State::_simulator_servos(Aircraft::sitl_input &input)
             input.servos[2] = ((input.servos[2]-1000) * _sitl->engine_mul) + 1000;
             if (input.servos[2] > 2000) input.servos[2] = 2000;
         }
-        _motors_on = ((input.servos[2]-1000)/1000.0f) > 0;
+        _sitl->motors_on = ((input.servos[2]-1000)/1000.0f) > 0;
     } else if (_vehicle == APMrover2) {
         // add in engine multiplier
         if (input.servos[2] != 1500) {
@@ -425,9 +365,9 @@ void SITL_State::_simulator_servos(Aircraft::sitl_input &input)
             if (input.servos[2] > 2000) input.servos[2] = 2000;
             if (input.servos[2] < 1000) input.servos[2] = 1000;
         }
-        _motors_on = ((input.servos[2]-1500)/500.0f) != 0;
+        _sitl->motors_on = ((input.servos[2]-1500)/500.0f) != 0;
     } else {
-        _motors_on = false;
+        _sitl->motors_on = false;
         // apply engine multiplier to first motor
         input.servos[0] = ((input.servos[0]-1000) * _sitl->engine_mul) + 1000;
         // run checks on each motor
@@ -437,67 +377,32 @@ void SITL_State::_simulator_servos(Aircraft::sitl_input &input)
             if (input.servos[i] < 1000) input.servos[i] = 1000;
             // update motor_on flag
             if ((input.servos[i]-1000)/1000.0f > 0) {
-                _motors_on = true;
+                _sitl->motors_on = true;
             }
         }
     }
 
-    float throttle = _motors_on?(input.servos[2]-1000) / 1000.0f:0;
-    // lose 0.7V at full throttle
-    float voltage = _sitl->batt_voltage - 0.7f*throttle;
+    float voltage;
+    
+    if (_sitl->state.battery_voltage <= 0) {
+        // simulate simple battery setup
+        float throttle = _sitl->motors_on?(input.servos[2]-1000) / 1000.0f:0;
+        // lose 0.7V at full throttle
+        voltage = _sitl->batt_voltage - 0.7f*throttle;
 
-    // assume 50A at full throttle
-    _current = 50.0f * throttle;
+        // assume 50A at full throttle
+        _current = 50.0f * throttle;
+    } else {
+        // FDM provides voltage and current
+        voltage = _sitl->state.battery_voltage;
+        _current = _sitl->state.battery_current;
+    }
 
     // assume 3DR power brick
     voltage_pin_value = ((voltage / 10.1f) / 5.0f) * 1024;
     current_pin_value = ((_current / 17.0f) / 5.0f) * 1024;
 }
 
-
-/*
-  send RC outputs to simulator
- */
-void SITL_State::_simulator_output(bool synthetic_clock_mode)
-{
-    struct {
-        uint16_t pwm[SITL_NUM_CHANNELS];
-        uint16_t speed, direction, turbulance;
-    } control;
-    Aircraft::sitl_input input;
-
-    _simulator_servos(input);
-
-    if (_sitl == NULL) {
-        return;
-    }
-
-    memcpy(control.pwm, input.servos, sizeof(control.pwm));
-
-    // setup wind control
-    float wind_speed = _sitl->wind_speed * 100;
-    float altitude = _barometer?_barometer->get_altitude():0;
-    if (altitude < 0) {
-        altitude = 0;
-    }
-    if (altitude < 60) {
-        wind_speed *= altitude / 60.0f;
-    }
-    control.speed      = wind_speed;
-    float direction = _sitl->wind_direction;
-    if (direction < 0) {
-        direction += 360;
-    }
-    control.direction  = direction * 100;
-    control.turbulance = _sitl->wind_turbulance * 100;
-
-    // zero the wind for the first 15s to allow pitot calibration
-    if (hal.scheduler->millis() < 15000) {
-        control.speed = 0;
-    }
-
-    sendto(_sitl_fd, (void*)&control, sizeof(control), MSG_DONTWAIT, (const sockaddr *)&_rcout_addr, sizeof(_rcout_addr));
-}
 
 // generate a random float between -1 and 1
 float SITL_State::_rand_float(void)
@@ -524,7 +429,7 @@ void SITL_State::init(int argc, char * const argv[])
     pwm_input[4] = pwm_input[7] = 1800;
     pwm_input[2] = pwm_input[5] = pwm_input[6] = 1000;
 
-    _scheduler = (SITLScheduler *)hal.scheduler;
+    _scheduler = SITLScheduler::from(hal.scheduler);
     _parse_command_line(argc, argv);
 }
 

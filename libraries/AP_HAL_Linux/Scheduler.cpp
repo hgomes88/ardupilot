@@ -9,7 +9,6 @@
 #include "Util.h"
 #include "SPIUARTDriver.h"
 #include "RPIOUARTDriver.h"
-#include <sys/time.h>
 #include <poll.h>
 #include <unistd.h>
 #include <stdlib.h>
@@ -28,7 +27,7 @@ extern const AP_HAL::HAL& hal;
 #define APM_LINUX_TONEALARM_PRIORITY    11
 #define APM_LINUX_IO_PRIORITY           10
 
-#if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIO
+#if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIO || CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_ERLEBRAIN2
 #define APM_LINUX_UART_PERIOD           10000
 #define APM_LINUX_RCIN_PERIOD           500
 #define APM_LINUX_TONEALARM_PERIOD      10000
@@ -38,15 +37,15 @@ extern const AP_HAL::HAL& hal;
 #define APM_LINUX_RCIN_PERIOD           10000
 #define APM_LINUX_TONEALARM_PERIOD      10000
 #define APM_LINUX_IO_PERIOD             20000
-#endif // CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIO
+#endif // CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_NAVIO || CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_ERLEBRAIN2
 
 
 
 
-LinuxScheduler::LinuxScheduler()
+Scheduler::Scheduler()
 {}
 
-void LinuxScheduler::_create_realtime_thread(pthread_t *ctx, int rtprio,
+void Scheduler::_create_realtime_thread(pthread_t *ctx, int rtprio,
                                              const char *name,
                                              pthread_startroutine_t start_routine)
 {
@@ -69,7 +68,7 @@ void LinuxScheduler::_create_realtime_thread(pthread_t *ctx, int rtprio,
     if (r != 0) {
         hal.console->printf("Error creating thread '%s': %s\n",
                             name, strerror(r));
-        panic(PSTR("Failed to create thread"));
+        AP_HAL::panic("Failed to create thread");
     }
     pthread_attr_destroy(&attr);
 
@@ -78,11 +77,9 @@ void LinuxScheduler::_create_realtime_thread(pthread_t *ctx, int rtprio,
     }
 }
 
-void LinuxScheduler::init(void* machtnichts)
+void Scheduler::init(void* machtnichts)
 {
     mlockall(MCL_CURRENT|MCL_FUTURE);
-
-    clock_gettime(CLOCK_MONOTONIC, &_sketch_start_time);
 
     struct sched_param param = { .sched_priority = APM_LINUX_MAIN_PRIORITY };
     sched_setscheduler(0, SCHED_FIFO, &param);
@@ -96,27 +93,27 @@ void LinuxScheduler::init(void* machtnichts)
         { .ctx = &_timer_thread_ctx,
           .rtprio = APM_LINUX_TIMER_PRIORITY,
           .name = "sched-timer",
-          .start_routine = &Linux::LinuxScheduler::_timer_thread,
+          .start_routine = &Linux::Scheduler::_timer_thread,
         },
         { .ctx = &_uart_thread_ctx,
           .rtprio = APM_LINUX_UART_PRIORITY,
           .name = "sched-uart",
-          .start_routine = &Linux::LinuxScheduler::_uart_thread,
+          .start_routine = &Linux::Scheduler::_uart_thread,
         },
         { .ctx = &_rcin_thread_ctx,
           .rtprio = APM_LINUX_RCIN_PRIORITY,
           .name = "sched-rcin",
-          .start_routine = &Linux::LinuxScheduler::_rcin_thread,
+          .start_routine = &Linux::Scheduler::_rcin_thread,
         },
         { .ctx = &_tonealarm_thread_ctx,
           .rtprio = APM_LINUX_TONEALARM_PRIORITY,
           .name = "sched-tonealarm",
-          .start_routine = &Linux::LinuxScheduler::_tonealarm_thread,
+          .start_routine = &Linux::Scheduler::_tonealarm_thread,
         },
         { .ctx = &_io_thread_ctx,
           .rtprio = APM_LINUX_IO_PRIORITY,
           .name = "sched-io",
-          .start_routine = &Linux::LinuxScheduler::_io_thread,
+          .start_routine = &Linux::Scheduler::_io_thread,
         },
         { }
     };
@@ -130,7 +127,7 @@ void LinuxScheduler::init(void* machtnichts)
                                 iter->start_routine);
 }
 
-void LinuxScheduler::_microsleep(uint32_t usec)
+void Scheduler::_microsleep(uint32_t usec)
 {
     struct timespec ts;
     ts.tv_sec = 0;
@@ -138,14 +135,14 @@ void LinuxScheduler::_microsleep(uint32_t usec)
     while (nanosleep(&ts, &ts) == -1 && errno == EINTR) ;
 }
 
-void LinuxScheduler::delay(uint16_t ms)
+void Scheduler::delay(uint16_t ms)
 {
-    if (stopped_clock_usec) {
+    if (_stopped_clock_usec) {
         return;
     }
-    uint64_t start = millis64();
+    uint64_t start = AP_HAL::millis64();
 
-    while ((millis64() - start) < ms) {
+    while ((AP_HAL::millis64() - start) < ms) {
         // this yields the CPU to other apps
         _microsleep(1000);
         if (_min_delay_cb_ms <= ms) {
@@ -156,56 +153,22 @@ void LinuxScheduler::delay(uint16_t ms)
     }
 }
 
-uint64_t LinuxScheduler::millis64()
+void Scheduler::delay_microseconds(uint16_t us)
 {
-    if (stopped_clock_usec) {
-        return stopped_clock_usec/1000;
-    }
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return 1.0e3*((ts.tv_sec + (ts.tv_nsec*1.0e-9)) -
-                  (_sketch_start_time.tv_sec +
-                   (_sketch_start_time.tv_nsec*1.0e-9)));
-}
-
-uint64_t LinuxScheduler::micros64()
-{
-    if (stopped_clock_usec) {
-        return stopped_clock_usec;
-    }
-    struct timespec ts;
-    clock_gettime(CLOCK_MONOTONIC, &ts);
-    return 1.0e6*((ts.tv_sec + (ts.tv_nsec*1.0e-9)) -
-                  (_sketch_start_time.tv_sec +
-                   (_sketch_start_time.tv_nsec*1.0e-9)));
-}
-
-uint32_t LinuxScheduler::millis()
-{
-    return millis64() & 0xFFFFFFFF;
-}
-
-uint32_t LinuxScheduler::micros()
-{
-    return micros64() & 0xFFFFFFFF;
-}
-
-void LinuxScheduler::delay_microseconds(uint16_t us)
-{
-    if (stopped_clock_usec) {
+    if (_stopped_clock_usec) {
         return;
     }
     _microsleep(us);
 }
 
-void LinuxScheduler::register_delay_callback(AP_HAL::Proc proc,
+void Scheduler::register_delay_callback(AP_HAL::Proc proc,
                                              uint16_t min_time_ms)
 {
     _delay_cb = proc;
     _min_delay_cb_ms = min_time_ms;
 }
 
-void LinuxScheduler::register_timer_process(AP_HAL::MemberProc proc)
+void Scheduler::register_timer_process(AP_HAL::MemberProc proc)
 {
     for (uint8_t i = 0; i < _num_timer_procs; i++) {
         if (_timer_proc[i] == proc) {
@@ -221,7 +184,7 @@ void LinuxScheduler::register_timer_process(AP_HAL::MemberProc proc)
     }
 }
 
-void LinuxScheduler::register_io_process(AP_HAL::MemberProc proc)
+void Scheduler::register_io_process(AP_HAL::MemberProc proc)
 {
     for (uint8_t i = 0; i < _num_io_procs; i++) {
         if (_io_proc[i] == proc) {
@@ -237,24 +200,24 @@ void LinuxScheduler::register_io_process(AP_HAL::MemberProc proc)
     }
 }
 
-void LinuxScheduler::register_timer_failsafe(AP_HAL::Proc failsafe, uint32_t period_us)
+void Scheduler::register_timer_failsafe(AP_HAL::Proc failsafe, uint32_t period_us)
 {
     _failsafe = failsafe;
 }
 
-void LinuxScheduler::suspend_timer_procs()
+void Scheduler::suspend_timer_procs()
 {
     if (!_timer_semaphore.take(0)) {
         printf("Failed to take timer semaphore\n");
     }
 }
 
-void LinuxScheduler::resume_timer_procs()
+void Scheduler::resume_timer_procs()
 {
     _timer_semaphore.give();
 }
 
-void LinuxScheduler::_run_timers(bool called_from_timer_thread)
+void Scheduler::_run_timers(bool called_from_timer_thread)
 {
     if (_in_timer_proc) {
         return;
@@ -273,9 +236,9 @@ void LinuxScheduler::_run_timers(bool called_from_timer_thread)
 
 #if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_RASPILOT
     //SPI UART use SPI
-    if (!((LinuxRPIOUARTDriver *)hal.uartC)->isExternal() )
+    if (!((RPIOUARTDriver *)hal.uartC)->isExternal() )
     {
-        ((LinuxRPIOUARTDriver *)hal.uartC)->_timer_tick();
+        ((RPIOUARTDriver *)hal.uartC)->_timer_tick();
     }
 #endif
 
@@ -289,9 +252,9 @@ void LinuxScheduler::_run_timers(bool called_from_timer_thread)
     _in_timer_proc = false;
 }
 
-void *LinuxScheduler::_timer_thread(void* arg)
+void *Scheduler::_timer_thread(void* arg)
 {
-    LinuxScheduler* sched = (LinuxScheduler *)arg;
+    Scheduler* sched = (Scheduler *)arg;
 
     while (sched->system_initializing()) {
         poll(NULL, 0, 1);
@@ -300,12 +263,12 @@ void *LinuxScheduler::_timer_thread(void* arg)
       this aims to run at an average of 1kHz, so that it can be used
       to drive 1kHz processes without drift
      */
-    uint64_t next_run_usec = sched->micros64() + 1000;
+    uint64_t next_run_usec = AP_HAL::micros64() + 1000;
     while (true) {
-        uint64_t dt = next_run_usec - sched->micros64();
+        uint64_t dt = next_run_usec - AP_HAL::micros64();
         if (dt > 2000) {
             // we've lost sync - restart
-            next_run_usec = sched->micros64();
+            next_run_usec = AP_HAL::micros64();
         } else {
             sched->_microsleep(dt);
         }
@@ -316,7 +279,7 @@ void *LinuxScheduler::_timer_thread(void* arg)
     return NULL;
 }
 
-void LinuxScheduler::_run_io(void)
+void Scheduler::_run_io(void)
 {
     if (!_io_semaphore.take(0)) {
         return;
@@ -332,23 +295,23 @@ void LinuxScheduler::_run_io(void)
     _io_semaphore.give();
 }
 
-void *LinuxScheduler::_rcin_thread(void *arg)
+void *Scheduler::_rcin_thread(void *arg)
 {
-    LinuxScheduler* sched = (LinuxScheduler *)arg;
+    Scheduler* sched = (Scheduler *)arg;
 
     while (sched->system_initializing()) {
         poll(NULL, 0, 1);
     }
     while (true) {
         sched->_microsleep(APM_LINUX_RCIN_PERIOD);
-        ((LinuxRCInput *)hal.rcin)->_timer_tick();
+        RCInput::from(hal.rcin)->_timer_tick();
     }
     return NULL;
 }
 
-void *LinuxScheduler::_uart_thread(void* arg)
+void *Scheduler::_uart_thread(void* arg)
 {
-    LinuxScheduler* sched = (LinuxScheduler *)arg;
+    Scheduler* sched = (Scheduler *)arg;
 
     while (sched->system_initializing()) {
         poll(NULL, 0, 1);
@@ -357,25 +320,24 @@ void *LinuxScheduler::_uart_thread(void* arg)
         sched->_microsleep(APM_LINUX_UART_PERIOD);
 
         // process any pending serial bytes
-        ((LinuxUARTDriver *)hal.uartA)->_timer_tick();
-        ((LinuxUARTDriver *)hal.uartB)->_timer_tick();
+        UARTDriver::from(hal.uartA)->_timer_tick();
+        UARTDriver::from(hal.uartB)->_timer_tick();
 #if CONFIG_HAL_BOARD_SUBTYPE == HAL_BOARD_SUBTYPE_LINUX_RASPILOT
         //SPI UART not use SPI
-        if ( ((LinuxRPIOUARTDriver *)hal.uartC)->isExternal() )
-        {
-            ((LinuxRPIOUARTDriver *)hal.uartC)->_timer_tick();
+        if (RPIOUARTDriver::from(hal.uartC)->isExternal()) {
+            RPIOUARTDriver::from(hal.uartC)->_timer_tick();
         }
 #else
-        ((LinuxUARTDriver *)hal.uartC)->_timer_tick();
+        UARTDriver::from(hal.uartC)->_timer_tick();
 #endif
-        ((LinuxUARTDriver *)hal.uartE)->_timer_tick();
+        UARTDriver::from(hal.uartE)->_timer_tick();
     }
     return NULL;
 }
 
-void *LinuxScheduler::_tonealarm_thread(void* arg)
+void *Scheduler::_tonealarm_thread(void* arg)
 {
-    LinuxScheduler* sched = (LinuxScheduler *)arg;
+    Scheduler* sched = (Scheduler *)arg;
 
     while (sched->system_initializing()) {
         poll(NULL, 0, 1);
@@ -384,14 +346,14 @@ void *LinuxScheduler::_tonealarm_thread(void* arg)
         sched->_microsleep(APM_LINUX_TONEALARM_PERIOD);
 
         // process tone command
-        ((LinuxUtil *)hal.util)->_toneAlarm_timer_tick();
+        Util::from(hal.util)->_toneAlarm_timer_tick();
     }
     return NULL;
 }
 
-void *LinuxScheduler::_io_thread(void* arg)
+void *Scheduler::_io_thread(void* arg)
 {
-    LinuxScheduler* sched = (LinuxScheduler *)arg;
+    Scheduler* sched = (Scheduler *)arg;
 
     while (sched->system_initializing()) {
         poll(NULL, 0, 1);
@@ -400,7 +362,7 @@ void *LinuxScheduler::_io_thread(void* arg)
         sched->_microsleep(APM_LINUX_IO_PERIOD);
 
         // process any pending storage writes
-        ((LinuxStorage *)hal.storage)->_timer_tick();
+        Storage::from(hal.storage)->_timer_tick();
 
         // run registered IO procepsses
         sched->_run_io();
@@ -408,47 +370,38 @@ void *LinuxScheduler::_io_thread(void* arg)
     return NULL;
 }
 
-void LinuxScheduler::panic(const prog_char_t *errormsg)
-{
-    write(1, errormsg, strlen(errormsg));
-    write(1, "\n", 1);
-    hal.rcin->deinit();
-    hal.scheduler->delay_microseconds(10000);
-    exit(1);
-}
-
-bool LinuxScheduler::in_timerprocess()
+bool Scheduler::in_timerprocess()
 {
     return _in_timer_proc;
 }
 
-void LinuxScheduler::begin_atomic()
+void Scheduler::begin_atomic()
 {}
 
-void LinuxScheduler::end_atomic()
+void Scheduler::end_atomic()
 {}
 
-bool LinuxScheduler::system_initializing() {
+bool Scheduler::system_initializing() {
     return !_initialized;
 }
 
-void LinuxScheduler::system_initialized()
+void Scheduler::system_initialized()
 {
     if (_initialized) {
-        panic("PANIC: scheduler::system_initialized called more than once");
+        AP_HAL::panic("PANIC: scheduler::system_initialized called more than once");
     }
     _initialized = true;
 }
 
-void LinuxScheduler::reboot(bool hold_in_bootloader)
+void Scheduler::reboot(bool hold_in_bootloader)
 {
     exit(1);
 }
 
-void LinuxScheduler::stop_clock(uint64_t time_usec)
+void Scheduler::stop_clock(uint64_t time_usec)
 {
-    if (time_usec >= stopped_clock_usec) {
-        stopped_clock_usec = time_usec;
+    if (time_usec >= _stopped_clock_usec) {
+        _stopped_clock_usec = time_usec;
         _run_io();
     }
 }

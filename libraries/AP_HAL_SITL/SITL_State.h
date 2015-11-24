@@ -23,6 +23,7 @@
 #include <AP_Terrain/AP_Terrain.h>
 #include <SITL/SITL.h>
 #include <SITL/SIM_Gimbal.h>
+#include <SITL/SIM_ADSB.h>
 
 class HAL_SITL;
 
@@ -58,11 +59,20 @@ public:
     // return TCP client address for uartC
     const char *get_client_address(void) const { return _client_address; }
 
+    // paths for UART devices
+    const char *_uart_path[5] {
+        "tcp:0:wait",
+        "GPS1",
+        "tcp:2",
+        "tcp:3",
+        "GPS2"
+    };
+    
 private:
     void _parse_command_line(int argc, char * const argv[]);
     void _set_param_default(const char *parm);
     void _usage(void);
-    void _sitl_setup(void);
+    void _sitl_setup(const char *home_str);
     void _setup_fdm(void);
     void _setup_timer(void);
     void _setup_adc(void);
@@ -109,20 +119,16 @@ private:
                      float airspeed,	float altitude);
     void _fdm_input(void);
     void _fdm_input_local(void);
-    void _simulator_servos(Aircraft::sitl_input &input);
+    void _simulator_servos(SITL::Aircraft::sitl_input &input);
     void _simulator_output(bool synthetic_clock_mode);
     void _apply_servo_filter(float deltat);
     uint16_t _airspeed_sensor(float airspeed);
     uint16_t _ground_sonar();
-    float _gyro_drift(void);
     float _rand_float(void);
     Vector3f _rand_vec3f(void);
     void _fdm_input_step(void);
 
     void wait_clock(uint64_t wait_time_usec);
-
-    pthread_t _fdm_thread_ctx;
-    void _fdm_thread(void);
 
     // internal state
     enum vehicle_type _vehicle;
@@ -132,7 +138,6 @@ private:
     struct sockaddr_in _rcout_addr;
     pid_t _parent_pid;
     uint32_t _update_count;
-    bool _motors_on;
 
     AP_Baro *_barometer;
     AP_InertialSensor *_ins;
@@ -142,7 +147,7 @@ private:
     AP_Terrain *_terrain;
 
     int _sitl_fd;
-    SITL *_sitl;
+    SITL::SITL *_sitl;
     uint16_t _rcout_port;
     uint16_t _simin_port;
     float _current;
@@ -190,12 +195,16 @@ private:
     uint32_t delayed_time_baro;
 
     // internal SITL model
-    Aircraft *sitl_model;
+    SITL::Aircraft *sitl_model;
 
     // simulated gimbal
     bool enable_gimbal;
-    Gimbal *gimbal;
+    SITL::Gimbal *gimbal;
 
+    // simulated gimbal
+    bool enable_ADSB;
+    SITL::ADSB *adsb;
+    
     // TCP address to connect uartC to
     const char *_client_address;
 };

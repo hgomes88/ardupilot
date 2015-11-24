@@ -9,8 +9,14 @@
 // acro_init - initialise acro controller
 bool Copter::acro_init(bool ignore_checks)
 {
-    // always successfully enter acro
-    return true;
+   // if landed and the mode we're switching from does not have manual throttle and the throttle stick is too high
+   if (motors.armed() && ap.land_complete && !mode_has_manual_throttle(control_mode) && (g.rc_3.control_in > get_non_takeoff_throttle())) {
+       return false;
+   }
+   // set target altitude to zero for reporting
+   pos_control.set_alt_target(0);
+
+   return true;
 }
 
 // acro_run - runs the acro controller

@@ -47,16 +47,22 @@ public:
     uint8_t temperature;
 };
 
-class Linux::LinuxRCOutput_Bebop : public AP_HAL::RCOutput {
+class Linux::RCOutput_Bebop : public AP_HAL::RCOutput {
 public:
-    LinuxRCOutput_Bebop();
+    RCOutput_Bebop();
+
+    static RCOutput_Bebop *from(AP_HAL::RCOutput *rcout) {
+        return static_cast<RCOutput_Bebop*>(rcout);
+    }
+
     void     init(void* dummy);
     void     set_freq(uint32_t chmask, uint16_t freq_hz);
     uint16_t get_freq(uint8_t ch);
     void     enable_ch(uint8_t ch);
     void     disable_ch(uint8_t ch);
     void     write(uint8_t ch, uint16_t period_us);
-    void     write(uint8_t ch, uint16_t* period_us, uint8_t len);
+    void     cork() override;
+    void     push() override;
     uint16_t read(uint8_t ch);
     void     read(uint16_t* period_us, uint8_t len);
     void     set_esc_scaling(uint16_t min_pwm, uint16_t max_pwm);
@@ -71,6 +77,7 @@ private:
     uint16_t _min_pwm;
     uint16_t _max_pwm;
     uint8_t  _state;
+    bool     _corking = false;
 
     uint8_t _checksum(uint8_t *data, unsigned int len);
     void _start_prop();

@@ -22,7 +22,7 @@
 
 extern const AP_HAL::HAL& hal;
 
-const AP_Param::GroupInfo AP_PitchController::var_info[] PROGMEM = {
+const AP_Param::GroupInfo AP_PitchController::var_info[] = {
 
 	// @Param: TCONST
 	// @DisplayName: Pitch Time Constant
@@ -114,7 +114,7 @@ const AP_Param::GroupInfo AP_PitchController::var_info[] PROGMEM = {
 */
 int32_t AP_PitchController::_get_rate_out(float desired_rate, float scaler, bool disable_integrator, float aspeed)
 {
-	uint32_t tnow = hal.scheduler->millis();
+	uint32_t tnow = AP_HAL::millis();
 	uint32_t dt = tnow - _last_t;
 	
 	if (_last_t == 0 || dt > 1000) {

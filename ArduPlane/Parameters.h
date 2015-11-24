@@ -91,7 +91,7 @@ public:
         k_param_scheduler,
         k_param_relay,
         k_param_takeoff_throttle_delay,
-        k_param_skip_gyro_cal,
+        k_param_skip_gyro_cal, // unused
         k_param_auto_fbw_steer,
         k_param_waypoint_max_radius,
         k_param_ground_steer_alt,        
@@ -141,12 +141,11 @@ public:
         k_param_gcs_pid_mask,
         k_param_crash_detection_enable,
         k_param_land_abort_throttle_enable,
-
-        // 97: RSSI
         k_param_rssi = 97,
-        
-        // 100: Arming parameters
+        k_param_rpm_sensor,
+        k_param_parachute,
         k_param_arming = 100,
+        k_param_parachute_channel,
 
         // 105: Extra parameters
         k_param_fence_retalt = 105,
@@ -199,6 +198,7 @@ public:
         k_param_NavEKF,  // Extended Kalman Filter Inertial Navigation Group
         k_param_mission, // mission library
         k_param_serial_manager, // serial manager library
+        k_param_NavEKF2,  // EKF2
 
         //
         // 150: Navigation parameters
@@ -221,6 +221,7 @@ public:
         k_param_camera = 160,
         k_param_camera_mount,
         k_param_camera_mount2,      // unused
+        k_param_adsb,
 
         //
         // Battery monitoring parameters
@@ -363,8 +364,6 @@ public:
     // attitude controller type.
     AP_Int8  att_controller;
 
-    // skip gyro calibration
-    AP_Int8  skip_gyro_cal;
     AP_Int8  auto_fbw_steer;
 
     // Estimation
@@ -491,6 +490,7 @@ public:
     AP_Int8 override_channel;
 #endif
     AP_Int16 gcs_pid_mask;
+    AP_Int8 parachute_channel;
 
     // RC channels
     RC_Channel rc_1;
@@ -503,12 +503,8 @@ public:
     RC_Channel_aux rc_8;
 #if CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
     RC_Channel_aux rc_9;
-#endif
-#if CONFIG_HAL_BOARD == HAL_BOARD_APM2 || CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
     RC_Channel_aux rc_10;
     RC_Channel_aux rc_11;
-#endif
-#if CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
     RC_Channel_aux rc_12;
     RC_Channel_aux rc_13;
     RC_Channel_aux rc_14;
@@ -528,12 +524,8 @@ public:
         rc_8                                    (CH_8),
 #if CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
         rc_9                                    (CH_9),
-#endif
-#if CONFIG_HAL_BOARD == HAL_BOARD_APM2 || CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
         rc_10                                   (CH_10),
         rc_11                                   (CH_11),
-#endif
-#if CONFIG_HAL_BOARD == HAL_BOARD_PX4 || CONFIG_HAL_BOARD == HAL_BOARD_VRBRAIN
         rc_12                                   (CH_12),
         rc_13                                   (CH_13),
         rc_14                                   (CH_14),

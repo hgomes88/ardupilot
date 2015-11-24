@@ -98,7 +98,7 @@
   4000 = 0.1hz
   
  */
-const AP_Scheduler::Task Copter::scheduler_tasks[] PROGMEM = {
+const AP_Scheduler::Task Copter::scheduler_tasks[] = {
     SCHED_TASK(rc_loop,                4,    130),
     SCHED_TASK(throttle_loop,          8,     75),
     SCHED_TASK(update_GPS,             8,    200),
@@ -108,6 +108,7 @@ const AP_Scheduler::Task Copter::scheduler_tasks[] PROGMEM = {
     SCHED_TASK(update_batt_compass,   40,    120),
     SCHED_TASK(read_aux_switches,     40,     50),
     SCHED_TASK(arm_motors_check,      40,     50),
+    SCHED_TASK(auto_disarm_check,     40,     50),
     SCHED_TASK(auto_trim,             40,     75),
     SCHED_TASK(update_altitude,       40,    140),
     SCHED_TASK(run_nav_updates,        8,    100),
@@ -180,7 +181,7 @@ void Copter::setup()
 
     // setup initial performance counters
     perf_info_reset();
-    fast_loopTimer = hal.scheduler->micros();
+    fast_loopTimer = AP_HAL::micros();
 }
 
 /*
@@ -206,7 +207,7 @@ void Copter::perf_update(void)
     if (should_log(MASK_LOG_PM))
         Log_Write_Performance();
     if (scheduler.debug()) {
-        gcs_send_text_fmt(PSTR("PERF: %u/%u %lu %lu\n"),
+        gcs_send_text_fmt(MAV_SEVERITY_WARNING, "PERF: %u/%u %lu %lu\n",
                           (unsigned)perf_info_get_num_long_running(),
                           (unsigned)perf_info_get_num_loops(),
                           (unsigned long)perf_info_get_max_time(),
@@ -475,17 +476,16 @@ void Copter::one_hz_loop()
         pre_arm_checks(false);
     }
 
-    // auto disarm checks
-    auto_disarm_check();
-
     if (!motors.armed()) {
         // make it possible to change ahrs orientation at runtime during initial config
         ahrs.set_orientation();
 
+        update_using_interlock();
+
+#if FRAME_CONFIG != HELI_FRAME
         // check the user hasn't updated the frame orientation
         motors.set_frame_orientation(g.frame_orientation);
 
-#if FRAME_CONFIG != HELI_FRAME
         // set all throttle channel settings
         motors.set_throttle_range(g.throttle_min, channel_throttle->radio_min, channel_throttle->radio_max);
         // set hover throttle
@@ -493,12 +493,12 @@ void Copter::one_hz_loop()
 #endif
     }
 
-    // update assigned functions and enable auxiliar servos
+    // update assigned functions and enable auxiliary servos
     RC_Channel_aux::enable_aux_servos();
 
     check_usb_mux();
 
-#if AP_TERRAIN_AVAILABLE
+#if AP_TERRAIN_AVAILABLE && AC_TERRAIN
     terrain.update();
 
     // tell the rangefinder our height, so it can go into power saving
@@ -644,20 +644,4 @@ void Copter::update_altitude()
     }
 }
 
-/*
-  compatibility with old pde style build
- */
-void setup(void);
-void loop(void);
-
-void setup(void)
-{
-    copter.setup();
-}
-void loop(void)
-{
-    copter.loop();
-}
-
-AP_HAL_MAIN();
-
+AP_HAL_MAIN_CALLBACKS(&copter);

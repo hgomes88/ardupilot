@@ -16,13 +16,15 @@
 #define LINUX_STORAGE_LINE_SIZE (1<<LINUX_STORAGE_LINE_SHIFT)
 #define LINUX_STORAGE_NUM_LINES (LINUX_STORAGE_SIZE/LINUX_STORAGE_LINE_SIZE)
 
-class Linux::LinuxStorage : public AP_HAL::Storage 
+class Linux::Storage : public AP_HAL::Storage
 {
 public:
-    LinuxStorage() :
-	_fd(-1),
-	_dirty_mask(0)
-	{}
+    Storage() : _fd(-1),_dirty_mask(0) { }
+
+    static Storage *from(AP_HAL::Storage *storage) {
+        return static_cast<Storage*>(storage);
+    }
+
     void init(void* machtnichts) {}
     uint8_t  read_byte(uint16_t loc);
     uint16_t read_word(uint16_t loc);

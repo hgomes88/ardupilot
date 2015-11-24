@@ -142,6 +142,9 @@
                <entry value="26" name="MAV_TYPE_GIMBAL">
                     <description>Onboard gimbal</description>
                </entry>
+               <entry value="27" name="MAV_TYPE_ADSB">
+                    <description>Onboard ADSB peripheral</description>
+               </entry>
           </enum>
           <enum name="FIRMWARE_VERSION_TYPE">
               <description>These values define the type of firmware release.  These values indicate the first version or release of this type.  For example the first alpha release would be 64, the second would be 65.</description>
@@ -376,6 +379,9 @@
                <entry value="154" name="MAV_COMP_ID_GIMBAL">
                     <description/>
                </entry>
+               <entry value="155" name="MAV_COMP_ID_ADSB">
+                    <description/>
+               </entry>
           </enum>
           <enum name="MAV_SYS_STATUS_SENSOR">
                <description>These encode the sensors whose status is sent as part of the SYS_STATUS message.</description>
@@ -600,7 +606,7 @@
                </entry>
                <entry value="21" name="MAV_CMD_NAV_LAND">
                     <description>Land at location</description>
-                    <param index="1">Empty</param>
+                    <param index="1">Abort Alt</param>
                     <param index="2">Empty</param>
                     <param index="3">Empty</param>
                     <param index="4">Desired yaw angle.</param>
@@ -1088,6 +1094,16 @@
                     <param index="1">1 to arm, 0 to disarm</param>
                     <param index="2">0 to disarm if landed, 21196 to force disarm any time</param>
                </entry>
+               <entry value="410" name="MAV_CMD_GET_HOME_POSITION">
+                    <description>Request the home position from the vehicle.</description>
+                    <param index="1">Reserved</param>
+                    <param index="2">Reserved</param>
+                    <param index="3">Reserved</param>
+                    <param index="4">Reserved</param>
+                    <param index="5">Reserved</param>
+                    <param index="6">Reserved</param>
+                    <param index="7">Reserved</param>
+               </entry>
                <entry value="500" name="MAV_CMD_START_RX_PAIR">
                     <description>Starts receiver pairing</description>
                     <param index="1">0:Spektrum</param>
@@ -1526,6 +1542,47 @@
               <entry value="4" name="MAV_BATTERY_TYPE_PAYLOAD">
                   <description>Payload battery</description>
               </entry>
+          </enum>
+          <enum name="ADSB_ALTITUDE_TYPE">
+              <description>Enumeration of the ADSB altimeter types</description>
+              <entry value="0" name="ADSB_ALTITUDE_TYPE_PRESSURE_QNH">
+                  <description>Altitude reported from a Baro source using QNH reference</description>
+              </entry>
+              <entry value="1" name="ADSB_ALTITUDE_TYPE_GEOMETRIC">
+                  <description>Altitude reported from a GNSS source</description>
+              </entry>
+          </enum>
+          <enum name="ADSB_EMITTER_TYPE">
+              <description>ADSB classification for the type of vehicle emitting the transponder signal</description>
+              <entry value="0" name="ADSB_EMITTER_TYPE_NO_INFO"></entry>
+              <entry value="1" name="ADSB_EMITTER_TYPE_LIGHT"></entry>
+              <entry value="2" name="ADSB_EMITTER_TYPE_SMALL"></entry>
+              <entry value="3" name="ADSB_EMITTER_TYPE_LARGE"></entry>
+              <entry value="4" name="ADSB_EMITTER_TYPE_HIGH_VORTEX_LARGE"></entry>
+              <entry value="5" name="ADSB_EMITTER_TYPE_HEAVY"></entry>
+              <entry value="6" name="ADSB_EMITTER_TYPE_HIGHLY_MANUV"></entry>
+              <entry value="7" name="ADSB_EMITTER_TYPE_ROTOCRAFT"></entry>
+              <entry value="8" name="ADSB_EMITTER_TYPE_UNASSIGNED"></entry>
+              <entry value="9" name="ADSB_EMITTER_TYPE_GLIDER"></entry>
+              <entry value="10" name="ADSB_EMITTER_TYPE_LIGHTER_AIR"></entry>
+              <entry value="11" name="ADSB_EMITTER_TYPE_PARACHUTE"></entry>
+              <entry value="12" name="ADSB_EMITTER_TYPE_ULTRA_LIGHT"></entry>
+              <entry value="13" name="ADSB_EMITTER_TYPE_UNASSIGNED2"></entry>
+              <entry value="14" name="ADSB_EMITTER_TYPE_UAV"></entry>
+              <entry value="15" name="ADSB_EMITTER_TYPE_SPACE"></entry>
+              <entry value="16" name="ADSB_EMITTER_TYPE_UNASSGINED3"></entry>
+              <entry value="17" name="ADSB_EMITTER_TYPE_EMERGENCY_SURFACE"></entry>
+              <entry value="18" name="ADSB_EMITTER_TYPE_SERVICE_SURFACE"></entry>
+              <entry value="19" name="ADSB_EMITTER_TYPE_POINT_OBSTACLE"></entry>
+          </enum>
+          <enum name="ADSB_FLAGS">
+              <description>These flags indicate status such as data validity of each data source. Set = data valid</description>
+              <entry value="1" name="ADSB_FLAGS_VALID_COORDS"></entry>
+              <entry value="2" name="ADSB_FLAGS_VALID_ALTITUDE"></entry>
+              <entry value="4" name="ADSB_FLAGS_VALID_HEADING"></entry>
+              <entry value="8" name="ADSB_FLAGS_VALID_VELOCITY"></entry>
+              <entry value="16" name="ADSB_FLAGS_VALID_CALLSIGN"></entry>
+              <entry value="32" name="ADSB_FLAGS_SIMULATED"></entry>
           </enum>
      </enums>
      <messages>
@@ -2685,6 +2742,48 @@
             <field type="uint32_t" name="clipping_0">first accelerometer clipping count</field>
             <field type="uint32_t" name="clipping_1">second accelerometer clipping count</field>
             <field type="uint32_t" name="clipping_2">third accelerometer clipping count</field>
+        </message>
+        <message id="242" name="HOME_POSITION">
+               <description>This message can be requested by sending the MAV_CMD_GET_HOME_POSITION command. The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitely set by the operator before or after. The position the system will return to and land on. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</description>
+               <field type="int32_t" name="latitude">Latitude (WGS84), in degrees * 1E7</field>
+               <field type="int32_t" name="longitude">Longitude (WGS84, in degrees * 1E7</field>
+               <field type="int32_t" name="altitude">Altitude (AMSL), in meters * 1000 (positive for up)</field>
+               <field type="float" name="x">Local X position of this position in the local coordinate frame</field>
+               <field type="float" name="y">Local Y position of this position in the local coordinate frame</field>
+               <field type="float" name="z">Local Z position of this position in the local coordinate frame</field>
+               <field type="float[4]" name="q">World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground</field>
+               <field type="float" name="approach_x">Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</field>
+               <field type="float" name="approach_y">Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</field>
+               <field type="float" name="approach_z">Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</field>
+        </message>
+        <message id="243" name="SET_HOME_POSITION">
+               <description>The position the system will return to and land on. The position is set automatically by the system during the takeoff in case it was not explicitely set by the operator before or after. The global and local positions encode the position in the respective coordinate frames, while the q parameter encodes the orientation of the surface. Under normal conditions it describes the heading and terrain slope, which can be used by the aircraft to adjust the approach. The approach 3D vector describes the point to which the system should fly in normal flight mode and then perform a landing sequence along the vector.</description>
+               <field type="uint8_t" name="target_system">System ID.</field>
+               <field type="int32_t" name="latitude">Latitude (WGS84), in degrees * 1E7</field>
+               <field type="int32_t" name="longitude">Longitude (WGS84, in degrees * 1E7</field>
+               <field type="int32_t" name="altitude">Altitude (AMSL), in meters * 1000 (positive for up)</field>
+               <field type="float" name="x">Local X position of this position in the local coordinate frame</field>
+               <field type="float" name="y">Local Y position of this position in the local coordinate frame</field>
+               <field type="float" name="z">Local Z position of this position in the local coordinate frame</field>
+               <field type="float[4]" name="q">World to surface normal and heading transformation of the takeoff position. Used to indicate the heading and slope of the ground</field>
+               <field type="float" name="approach_x">Local X position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</field>
+               <field type="float" name="approach_y">Local Y position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</field>
+               <field type="float" name="approach_z">Local Z position of the end of the approach vector. Multicopters should set this position based on their takeoff path. Grass-landing fixed wing aircraft should set it the same way as multicopters. Runway-landing fixed wing aircraft should set it to the opposite direction of the takeoff, assuming the takeoff happened from the threshold / touchdown zone.</field>
+        </message>
+        <message id="246" name="ADSB_VEHICLE">
+          <description>The location and information of an ADSB vehicle</description>
+          <field type="uint32_t" name="ICAO_address">ICAO address</field>
+          <field type="float" name="lat">The reported latitude in degrees</field>
+          <field type="float" name="lon">The reported longitude in degrees</field>
+          <field type="uint8_t" name="altitude_type" enum="ADSB_ALTITUDE_TYPE">Type from ADSB_ALTITUDE_TYPE enum.</field>
+          <field type="float" name="altitude">Altitude(ASL) in meters</field>
+          <field type="uint16_t" name="heading">Course over ground in degrees * 10^2</field>
+          <field type="float" name="hor_velocity">The horizontal velocity in meters/second</field>
+          <field type="float" name="ver_velocity">The vertical velocity in meters/second, positive is up</field>
+          <field type="char[9]" name="callsign">The callsign(squawk)</field>
+          <field type="uint8_t" name="emitter_type" enum="ADSB_EMITTER_TYPE">Type from ADSB_EMITTER_TYPE enum</field>
+          <field type="uint8_t" name="tslc">Time since last communication in seconds</field>
+          <field type="uint16_t" name="flags" enum="ADSB_FLAGS">Flags to indicate various statuses including valid data fields</field>
         </message>
         <message id="248" name="V2_EXTENSION">
             <description>Message implementing parts of the V2 payload specs in V1 frames for transitional support.</description>

@@ -32,13 +32,9 @@
 #include <errno.h>
 #include <math.h>
 
-extern const AP_HAL::HAL& hal;
+#define PWM_LOGGING 0
 
-/*
-  don't accept periods below 100us as it is probably ringing of the
-  signal. It would represent 600k RPM
- */
-#define RPM_MIN_PERIOD_US 100
+extern const AP_HAL::HAL& hal;
 
 /* 
    open the sensor in constructor
@@ -59,6 +55,10 @@ AP_RPM_PX4_PWM::AP_RPM_PX4_PWM(AP_RPM &_ap_rpm, uint8_t instance, AP_RPM::RPM_St
         _fd = -1;
         return;
     }
+
+#if PWM_LOGGING
+    _logfd = open("/fs/microsd/pwm.log", O_WRONLY|O_CREAT|O_TRUNC, 0644);
+#endif
 }
 
 /* 
@@ -85,15 +85,28 @@ void AP_RPM_PX4_PWM::update(void)
 
     while (::read(_fd, &pwm, sizeof(pwm)) == sizeof(pwm)) {
         // the px4 pwm_input driver reports the period in microseconds
-        if (pwm.period > RPM_MIN_PERIOD_US) {
-            sum += (1.0e6f * 60) / pwm.period;
+        if (pwm.period == 0) {
+            continue;
+        }
+        float rpm = scaling * (1.0e6f * 60) / pwm.period;
+        float maximum = ap_rpm._maximum[state.instance];
+        if (maximum <= 0 || rpm <= maximum) {
+            sum += rpm;
             count++;
         }
+#if PWM_LOGGING
+        if (_logfd != -1) {
+            dprintf(_logfd, "%u %u %u\n",
+                    (unsigned)pwm.timestamp/1000,
+                    (unsigned)pwm.period,
+                    (unsigned)pwm.pulse_width);
+        }
+#endif
     }
 
     if (count != 0) {
-        state.rate_rpm = scaling * sum / count;
-        state.last_reading_ms = hal.scheduler->millis();
+        state.rate_rpm = sum / count;
+        state.last_reading_ms = AP_HAL::millis();
     }
 }
 

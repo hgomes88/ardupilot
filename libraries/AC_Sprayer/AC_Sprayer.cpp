@@ -7,7 +7,7 @@ extern const AP_HAL::HAL& hal;
 
 // ------------------------------
 
-const AP_Param::GroupInfo AC_Sprayer::var_info[] PROGMEM = {
+const AP_Param::GroupInfo AC_Sprayer::var_info[] = {
     // @Param: ENABLE
     // @DisplayName: Sprayer enable/disable
     // @Description: Allows you to enable (1) or disable (0) the sprayer
@@ -116,7 +116,7 @@ AC_Sprayer::update()
     ground_speed = pythagorous2(velocity.x,velocity.y);
 
     // get the current time
-    now = hal.scheduler->millis();
+    now = AP_HAL::millis();
 
     // check our speed vs the minimum
     if (ground_speed >= _speed_min) {

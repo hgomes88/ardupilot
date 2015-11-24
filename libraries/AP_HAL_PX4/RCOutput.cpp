@@ -23,7 +23,7 @@ void PX4RCOutput::init(void* unused)
     _perf_rcout = perf_alloc(PC_ELAPSED, "APM_rcout");
     _pwm_fd = open(PWM_OUTPUT0_DEVICE_PATH, O_RDWR);
     if (_pwm_fd == -1) {
-        hal.scheduler->panic("Unable to open " PWM_OUTPUT0_DEVICE_PATH);
+        AP_HAL::panic("Unable to open " PWM_OUTPUT0_DEVICE_PATH);
     }
     if (ioctl(_pwm_fd, PWM_SERVO_ARM, 0) != 0) {
         hal.console->printf("RCOutput: Unable to setup IO arming\n");
@@ -235,13 +235,6 @@ void PX4RCOutput::write(uint8_t ch, uint16_t period_us)
     }
 }
 
-void PX4RCOutput::write(uint8_t ch, uint16_t* period_us, uint8_t len)
-{
-    for (uint8_t i=0; i<len; i++) {
-        write(i, period_us[i]);
-    }
-}
-
 uint16_t PX4RCOutput::read(uint8_t ch) 
 {
     if (ch >= PX4_NUM_OUTPUT_CHANNELS) {
@@ -337,7 +330,7 @@ void PX4RCOutput::_publish_actuators(void)
 
 void PX4RCOutput::_timer_tick(void)
 {
-    uint32_t now = hal.scheduler->micros();
+    uint32_t now = AP_HAL::micros();
 
     if ((_enabled_channels & ((1U<<_servo_count)-1)) == 0) {
         // no channels enabled

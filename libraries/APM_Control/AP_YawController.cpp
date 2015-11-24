@@ -23,7 +23,7 @@
 
 extern const AP_HAL::HAL& hal;
 
-const AP_Param::GroupInfo AP_YawController::var_info[] PROGMEM = {
+const AP_Param::GroupInfo AP_YawController::var_info[] = {
 
 	// @Param: SLIP
 	// @DisplayName: Sideslip control gain
@@ -72,7 +72,7 @@ const AP_Param::GroupInfo AP_YawController::var_info[] PROGMEM = {
 
 int32_t AP_YawController::get_servo_out(float scaler, bool disable_integrator)
 {
-	uint32_t tnow = hal.scheduler->millis();
+	uint32_t tnow = AP_HAL::millis();
 	uint32_t dt = tnow - _last_t;
 	if (_last_t == 0 || dt > 1000) {
 		dt = 0;

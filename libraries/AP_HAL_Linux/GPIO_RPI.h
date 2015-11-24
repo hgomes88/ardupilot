@@ -1,4 +1,3 @@
-
 #ifndef __AP_HAL_LINUX_GPIO_RPI_H__
 #define __AP_HAL_LINUX_GPIO_RPI_H__
 
@@ -12,15 +11,15 @@
 #define BCM2708_PERI_BASE   0x20000000
 #define BCM2709_PERI_BASE   0x3F000000
 #define GPIO_BASE(address)  (address + 0x200000)
-#define PWM_BASE(address)		(address + 0x20C000) /* PWM controller */
+#define PWM_BASE(address)   (address + 0x20C000) /* PWM controller */
 #define CLOCK_BASE(address) (address + 0x101000)
 
-#define	PWM_CTL  0
-#define	PWM_RNG1 4
-#define	PWM_DAT1 5
+#define PWM_CTL  0
+#define PWM_RNG1 4
+#define PWM_DAT1 5
 
-#define	PWMCLK_CNTL 40
-#define	PWMCLK_DIV  41
+#define PWMCLK_CNTL 40
+#define PWMCLK_DIV  41
 
 #define PAGE_SIZE           (4*1024)
 #define BLOCK_SIZE          (4*1024)
@@ -65,7 +64,7 @@
 #define RPI_GPIO_30   30   // Pin 5
 #define RPI_GPIO_31   31   // Pin 6
 
-class Linux::LinuxGPIO_RPI : public AP_HAL::GPIO {
+class Linux::GPIO_RPI : public AP_HAL::GPIO {
 private:
     int  mem_fd;
     void *gpio_map;
@@ -74,12 +73,11 @@ private:
     volatile uint32_t *gpio;
     volatile uint32_t *pwm;
     volatile uint32_t *clk;
-    int getRaspberryPiVersion() const;
     void setPWM0Period(uint32_t time_us);
     void setPWM0Duty(uint8_t percent);
 
 public:
-    LinuxGPIO_RPI();
+    GPIO_RPI();
     void    init();
     void    pinMode(uint8_t pin, uint8_t output);
     void    pinMode(uint8_t pin, uint8_t output, uint8_t alt);

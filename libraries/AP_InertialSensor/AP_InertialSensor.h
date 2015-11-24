@@ -12,25 +12,18 @@
 
 /**
    maximum number of INS instances available on this platform. If more
-   than 1 then redundent sensors may be available
+   than 1 then redundant sensors may be available
  */
-#if HAL_CPU_CLASS > HAL_CPU_CLASS_16
 #define INS_MAX_INSTANCES 3
 #define INS_MAX_BACKENDS  6
-#define INS_VIBRATION_CHECK 1
 #define INS_VIBRATION_CHECK_INSTANCES 2
-#else
-#define INS_MAX_INSTANCES 1
-#define INS_MAX_BACKENDS  1
-#define INS_VIBRATION_CHECK 0
-#endif
-
 
 #include <stdint.h>
 #include <AP_HAL/AP_HAL.h>
 #include <AP_Math/AP_Math.h>
 #include "AP_InertialSensor_UserInteract.h"
 #include <Filter/LowPassFilter.h>
+#include <Filter/LowPassFilter2p.h>
 
 class AP_InertialSensor_Backend;
 class AuxiliaryBus;
@@ -56,11 +49,6 @@ public:
     AP_InertialSensor();
     static AP_InertialSensor *get_instance();
 
-    enum Start_style {
-        COLD_START = 0,
-        WARM_START
-    };
-
     // the rate that updates will be available to the application
     enum Sample_rate {
         RATE_50HZ  = 50,
@@ -69,26 +57,25 @@ public:
         RATE_400HZ = 400
     };
 
+    enum Gyro_Calibration_Timing {
+        GYRO_CAL_NEVER = 0,
+        GYRO_CAL_STARTUP_ONLY = 1
+    };
+
     /// Perform startup initialisation.
     ///
     /// Called to initialise the state of the IMU.
     ///
-    /// For COLD_START, implementations using real sensors can assume
-    /// that the airframe is stationary and nominally oriented.
-    ///
-    /// For WARM_START, no assumptions should be made about the
-    /// orientation or motion of the airframe.  Calibration should be
-    /// as for the previous COLD_START call.
+    /// Gyros will be calibrated unless INS_GYRO_CAL is zero
     ///
     /// @param style	The initialisation startup style.
     ///
-    void init( Start_style style,
-               Sample_rate sample_rate);
+    void init(Sample_rate sample_rate);
 
     /// Register a new gyro/accel driver, allocating an instance
     /// number
-    uint8_t register_gyro(void);
-    uint8_t register_accel(void);
+    uint8_t register_gyro(uint16_t raw_sample_rate_hz);
+    uint8_t register_accel(uint16_t raw_sample_rate_hz);
 
     // perform accelerometer calibration including providing user instructions
     // and feedback
@@ -147,6 +134,7 @@ public:
     bool gyro_calibrated_ok(uint8_t instance) const { return _gyro_cal_ok[instance]; }
     bool gyro_calibrated_ok_all() const;
     bool use_gyro(uint8_t instance) const;
+    Gyro_Calibration_Timing gyro_calibration_timing() { return (Gyro_Calibration_Timing)_gyro_cal_timing.get(); }
 
     bool get_accel_health(uint8_t instance) const { return (instance<_accel_count) ? _accel_healthy[instance] : false; }
     bool get_accel_health(void) const { return get_accel_health(_primary_accel); }
@@ -214,7 +202,6 @@ public:
     // enable/disable raw gyro/accel logging
     void set_raw_logging(bool enable) { _log_raw_data = enable; }
 
-#if INS_VIBRATION_CHECK
     // calculate vibration levels and check for accelerometer clipping (called by a backends)
     void calc_vibration_and_clipping(uint8_t instance, const Vector3f &accel, float dt);
 
@@ -224,7 +211,6 @@ public:
 
     // retrieve and clear accelerometer clipping count
     uint32_t get_accel_clip_count(uint8_t instance) const;
-#endif
 
     // check for vibration movement. True when all axis show nearly zero movement
     bool is_still();
@@ -240,15 +226,17 @@ public:
     void set_delta_velocity(uint8_t instance, float deltavt, const Vector3f &deltav);
     void set_delta_angle(uint8_t instance, const Vector3f &deltaa);
 
-    AuxiliaryBus *get_auxiliar_bus(int16_t backend_id);
+    AuxiliaryBus *get_auxiliary_bus(int16_t backend_id) { return get_auxiliary_bus(backend_id, 0); }
+    AuxiliaryBus *get_auxiliary_bus(int16_t backend_id, uint8_t instance);
+
+    void detect_backends(void);
 
 private:
 
     // load backend drivers
     void _add_backend(AP_InertialSensor_Backend *backend);
-    void _detect_backends(void);
     void _start_backends();
-    AP_InertialSensor_Backend *_find_backend(int16_t backend_id);
+    AP_InertialSensor_Backend *_find_backend(int16_t backend_id, uint8_t instance);
 
     // gyro initialisation
     void _init_gyro();
@@ -291,11 +279,26 @@ private:
     Vector3f _delta_velocity[INS_MAX_INSTANCES];
     float _delta_velocity_dt[INS_MAX_INSTANCES];
     bool _delta_velocity_valid[INS_MAX_INSTANCES];
+    // delta velocity accumulator
+    Vector3f _delta_velocity_acc[INS_MAX_INSTANCES];
+    // time accumulator for delta velocity accumulator
+    float _delta_velocity_acc_dt[INS_MAX_INSTANCES];
 
+    // Low Pass filters for gyro and accel
+    LowPassFilter2pVector3f _accel_filter[INS_MAX_INSTANCES];
+    LowPassFilter2pVector3f _gyro_filter[INS_MAX_INSTANCES];
+    Vector3f _accel_filtered[INS_MAX_INSTANCES];
+    Vector3f _gyro_filtered[INS_MAX_INSTANCES];
+    bool _new_accel_data[INS_MAX_INSTANCES];
+    bool _new_gyro_data[INS_MAX_INSTANCES];
+    
     // Most recent gyro reading
     Vector3f _gyro[INS_MAX_INSTANCES];
     Vector3f _delta_angle[INS_MAX_INSTANCES];
     bool _delta_angle_valid[INS_MAX_INSTANCES];
+    Vector3f _delta_angle_acc[INS_MAX_INSTANCES];
+    Vector3f _last_delta_angle[INS_MAX_INSTANCES];
+    Vector3f _last_raw_gyro[INS_MAX_INSTANCES];
 
     // product id
     AP_Int16 _product_id;
@@ -308,8 +311,9 @@ private:
     // accelerometer max absolute offsets to be used for calibration
     float _accel_max_abs_offsets[INS_MAX_INSTANCES];
 
-    // accelerometer sample rate in units of Hz
-    uint32_t _accel_sample_rates[INS_MAX_INSTANCES];
+    // accelerometer and gyro raw sample rate in units of Hz
+    uint16_t _accel_raw_sample_rates[INS_MAX_INSTANCES];
+    uint16_t _gyro_raw_sample_rates[INS_MAX_INSTANCES];
 
     // temperatures for an instance if available
     float _temperature[INS_MAX_INSTANCES];
@@ -317,6 +321,7 @@ private:
     // filtering frequency (0 means default)
     AP_Int8     _accel_filter_cutoff;
     AP_Int8     _gyro_filter_cutoff;
+    AP_Int8     _gyro_cal_timing;
 
     // use for attitude, velocity, position estimates
     AP_Int8     _use[INS_MAX_INSTANCES];
@@ -364,7 +369,6 @@ private:
     uint32_t _accel_error_count[INS_MAX_INSTANCES];
     uint32_t _gyro_error_count[INS_MAX_INSTANCES];
 
-#if INS_VIBRATION_CHECK
     // vibration and clipping
     uint32_t _accel_clip_count[INS_MAX_INSTANCES];
     LowPassFilterVector3f _accel_vibe_floor_filter[INS_VIBRATION_CHECK_INSTANCES];
@@ -372,7 +376,6 @@ private:
 
     // threshold for detecting stillness
     AP_Float _still_threshold;
-#endif
 
     /*
       state for HIL support
@@ -389,13 +392,13 @@ private:
 #include "AP_InertialSensor_Backend.h"
 #include "AP_InertialSensor_MPU6000.h"
 #include "AP_InertialSensor_PX4.h"
-#include "AP_InertialSensor_Oilpan.h"
 #include "AP_InertialSensor_MPU9250.h"
 #include "AP_InertialSensor_L3G4200D.h"
 #include "AP_InertialSensor_Flymaple.h"
 #include "AP_InertialSensor_MPU9150.h"
 #include "AP_InertialSensor_LSM9DS0.h"
 #include "AP_InertialSensor_HIL.h"
+#include "AP_InertialSensor_SITL.h"
 #include "AP_InertialSensor_UserInteract_Stream.h"
 #include "AP_InertialSensor_UserInteract_MAVLink.h"
 
